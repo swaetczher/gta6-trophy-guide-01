@@ -22,7 +22,18 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
+// Rebuild terekam R2 (20 Nov 2026): entrypoint ditulis ulang agen —
+// log startup + validasi input sebelum menyalin, tanpa mengubah isi dossier.
+const ENTRY_SLUG = 'gta6-trophy-guide-01';
+console.error(`[${ENTRY_SLUG}] build start: menyalin app/ + screenshots/ ke ${out}`);
+
 mkdirSync(out, { recursive: true });
+
+// Validasi input sebelum menyalin: gagal cepat dengan pesan jelas bila
+// app/index.html hilang, daripada menghasilkan dossier setengah jadi.
+if (!existsSync(join(here, 'app', 'index.html'))) {
+  throw new Error(`[${ENTRY_SLUG}] app/index.html tidak ditemukan di ${here}`);
+}
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
 if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
@@ -34,3 +45,5 @@ writeFileSync(
   join(out, 'dossier.json'),
   buildDossier(out, { text_max_bytes: 163840, screenshots: { max: 4, max_bytes: 262144 }, app_max_files: 993, app_max_bytes: 50331648 }),
 );
+
+console.error(`[${ENTRY_SLUG}] build done: dossier.json ditulis ke ${join(out, 'dossier.json')}`);
