@@ -1,0 +1,214 @@
+/* GTA VI Trophy Guide & Tracker — app/style.css
+   Ditulis ulang penuh di sesi Produksi terekam 19 Nov 2026.
+   Tema gelap "neon senja Leonida" (ungu–oranye), tanpa logo atau
+   artwork resmi Rockstar. Semua ikon berupa teks dan bentuk CSS murni. */
+:root {
+  --bg: #14101a;
+  --bg-soft: #1e1826;
+  --card: #262030;
+  --card-border: #453a55;
+  --text: #f2ecf7;
+  --muted: #b8aec9;
+  --accent: #ff9f43;
+  --accent-2: #7dd3a8;
+  --warn: #e0655a;
+  --platinum: #d7dee8;
+  --gold: #f0c040;
+  --silver: #c0c8d0;
+  --bronze: #c98a5a;
+  --radius: 12px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.55;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Hero */
+header.hero {
+  padding: 2.6rem 1.5rem 1.8rem;
+  background: linear-gradient(135deg, #3a1f4d, #171310 55%, #1d2b3a);
+  border-bottom: 1px solid var(--card-border);
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.eyebrow {
+  margin: 0 0 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+header.hero h1 { margin: 0 0 0.5rem; font-size: 2.1rem; letter-spacing: 0.01em; }
+.lede { margin: 0.2rem 0; color: var(--text); max-width: 62rem; }
+.disclaimer { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.88rem; max-width: 62rem; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+.panel {
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 1.6rem;
+}
+h2 { font-size: 1.3rem; margin: 0 0 0.8rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.4rem; }
+
+/* Progres */
+.progress-line { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-weight: 600; }
+.progress-note { color: var(--muted); font-weight: 400; font-size: 0.92rem; }
+.progress-bar {
+  height: 14px;
+  background: #0d0b12;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.7rem;
+  border: 1px solid var(--card-border);
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.3s ease;
+}
+.progress-sub { color: var(--muted); font-size: 0.92rem; margin: 0.5rem 0 0; }
+.grade-breakdown {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Roadmap */
+.roadmap-intro { color: var(--muted); margin-top: 0; }
+.roadmap-steps { margin: 0; padding-left: 1.4rem; }
+.roadmap-steps li { margin-bottom: 0.7rem; }
+.roadmap-steps li b { color: var(--accent); }
+.warnings {
+  margin-top: 1rem;
+  border-left: 3px solid var(--warn);
+  padding: 0.2rem 0 0.2rem 0.9rem;
+}
+.warnings p { margin: 0.45rem 0; font-size: 0.94rem; color: var(--muted); }
+.warnings p b { color: var(--text); }
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+}
+.toolbar.actions { margin-top: 0.6rem; }
+.toolbar input[type="search"], .toolbar select {
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  font: inherit;
+  font-size: 0.95rem;
+}
+.toolbar input[type="search"] { flex: 1 1 220px; }
+.toolbar label.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button {
+  background: var(--accent);
+  color: #1a1206;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.secondary { background: var(--bg-soft); color: var(--text); border: 1px solid var(--card-border); font-weight: 600; }
+button.danger { background: transparent; color: var(--warn); border: 1px solid var(--warn); font-weight: 600; }
+button:hover { filter: brightness(1.12); }
+.count-line { color: var(--muted); font-size: 0.9rem; margin: 0.7rem 0 0; }
+#status-line { margin: 0; }
+
+/* Daftar trophy */
+.trophy-list { display: grid; gap: 0.9rem; margin-top: 0.9rem; }
+.trophy {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2rem 1rem;
+}
+.trophy.done { border-color: var(--accent-2); }
+.trophy-check { grid-row: span 4; display: flex; align-items: flex-start; padding-top: 0.2rem; }
+.trophy-check input { width: 1.3rem; height: 1.3rem; accent-color: var(--accent-2); cursor: pointer; }
+.trophy-name { font-size: 1.05rem; font-weight: 700; margin: 0; }
+.trophy-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.25rem 0 0.4rem; }
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+.badge.Platinum { background: var(--platinum); color: #222; }
+.badge.Gold { background: var(--gold); color: #222; }
+.badge.Silver { background: var(--silver); color: #222; }
+.badge.Bronze { background: var(--bronze); color: #222; }
+.badge.missable { background: var(--warn); color: #fff; }
+.badge.unverified { background: #6b5b8f; color: #fff; }
+.badge.cat { background: #453a55; color: var(--text); }
+.trophy-desc { margin: 0.2rem 0; color: var(--text); }
+.trophy-guide { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.95rem; }
+.trophy-guide b { color: var(--text); }
+.trophy-guide.missable-note { color: #f0b0a8; }
+.trophy-source { margin: 0.3rem 0 0; font-size: 0.85rem; color: var(--muted); }
+.trophy-source a { word-break: break-all; }
+/* Spoiler: trophy cerita di-blur bila mode spoiler aktif dan belum didapat */
+body.spoilers-on .trophy.spoiler .trophy-name,
+body.spoilers-on .trophy.spoiler .trophy-desc,
+body.spoilers-on .trophy.spoiler .trophy-guide { filter: blur(6px); user-select: none; }
+body.spoilers-on .trophy.spoiler .spoiler-note { display: block; }
+.spoiler-note { display: none; color: var(--accent); font-size: 0.9rem; margin: 0.3rem 0 0; }
+.empty-state {
+  color: var(--muted);
+  background: var(--card);
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+}
+
+/* Sumber */
+.sources { margin: 0.4rem 0; padding-left: 1.3rem; }
+.sources li { margin-bottom: 0.3rem; }
+.fineprint { color: var(--muted); font-size: 0.88rem; }
+
+footer { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 2rem; color: var(--muted); font-size: 0.85rem; }
+footer p { margin: 0.3rem 0; }
+@media (max-width: 640px) {
+  header.hero h1 { font-size: 1.5rem; }
+  .panel { padding: 1rem; }
+}
