@@ -2,20 +2,22 @@
 <html lang="id">
 <head>
   <!--
-    Panduan Trophy GTA VI — halaman utama (ditulis ulang ronde rebuild-2).
-    File statis: dibuka langsung di browser desktop, tanpa jaringan,
-    tanpa build step. Gaya di style.css, logika di app.js, data di
-    data/trophies.json. Semua teks antarmuka dipertahankan sama seperti
-    versi sebelumnya supaya tangkapan layar lama tetap akurat.
+    Halaman utama Panduan Trophy GTA VI — penulisan ketiga, ronde rebuild-3.
+    Berkas statis: cukup dibuka di browser desktop, tanpa jaringan dan
+    tanpa langkah build. Gaya ada di style.css, logika di app.js, data
+    di data/trophies.json. Seluruh teks yang terlihat di halaman ini
+    dipertahankan sama seperti ronde sebelumnya supaya tampilan tidak
+    berubah; yang diubah hanya susunan atribut, pemotongan baris, dan
+    komentar.
   -->
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="Tracker 55 trophy PS5 Grand Theft Auto VI: daftar resmi, panduan bahasa Indonesia, checklist di browser, filter, mode spoiler, dan roadmap ke Platinum. Statis dan offline." name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tracker 55 trophy PS5 Grand Theft Auto VI: nama, deskripsi, dan grade resmi, panduan Indonesia dengan kata-kata sendiri, checklist di browser, filter, mode spoiler, dan roadmap ke Platinum. Statis dan offline.">
   <title>Panduan Trophy GTA VI — Tracker 55 Trophy PS5</title>
-  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Pita atas: judul + ringkasan + penafian penggemar -->
+  <!-- Pita atas: judul, ringkasan, dan penafian penggemar -->
   <header class="hero">
     <div class="hero-inner">
       <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 Trophy</p>
@@ -26,22 +28,22 @@
   </header>
 
   <main>
-    <!-- Panel progres: angka, bilah, rincian per grade -->
-    <section aria-labelledby="progress-title" class="panel">
+    <!-- Panel progres: angka, bilah, dan rincian per grade -->
+    <section class="panel" aria-labelledby="progress-title">
       <h2 id="progress-title">Progres menuju Platinum</h2>
       <div class="progress-line">
         <span id="progress-text">0 / 55 trophy (0%)</span>
         <span class="progress-note">Platinum terbuka saat 54 trophy lainnya selesai</span>
       </div>
-      <div aria-label="Progres trophy" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar" role="progressbar">
+      <div class="progress-bar" role="progressbar" aria-label="Progres trophy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="progress-fill" id="progress-fill"></div>
       </div>
       <p class="progress-sub" id="progress-sub">Data trophy belum dimuat.</p>
-      <ul aria-label="Progres per grade" class="grade-breakdown" id="grade-breakdown"></ul>
+      <ul class="grade-breakdown" id="grade-breakdown" aria-label="Progres per grade"></ul>
     </section>
 
-    <!-- Roadmap empat fase + tiga peringatan (save, cheat, balapan Yago) -->
-    <section aria-labelledby="roadmap-title" class="panel roadmap">
+    <!-- Roadmap empat fase plus tiga peringatan (save, cheat, balapan Yago) -->
+    <section class="panel roadmap" aria-labelledby="roadmap-title">
       <h2 id="roadmap-title">Roadmap ke Platinum</h2>
       <p class="roadmap-intro">Tidak ada trophy kesulitan dan tidak ada trophy online — platinum ini panjang, bukan sulit (estimasi kesulitan 4/10). Proyeksi waktu peluncuran: cerita sekitar 50–60 jam, platinum sekitar 200 sampai 300+ jam. Angka-angka itu estimasi awal, bukan rata-rata terukur — belum ada data penyelesaian nyata karena game baru rilis 19 November 2026.</p>
       <ol class="roadmap-steps">
@@ -71,20 +73,20 @@
       </div>
     </section>
 
-    <!-- Daftar trophy: toolbar filter + aksi export/import/reset + kartu -->
-    <section aria-labelledby="list-title" class="panel">
+    <!-- Daftar trophy: toolbar filter, aksi export/import/reset, dan kartu -->
+    <section class="panel" aria-labelledby="list-title">
       <h2 id="list-title">Daftar Trophy</h2>
 
       <div class="toolbar" role="search">
-        <input aria-label="Cari trophy" id="search" placeholder="Cari trophy (nama / deskripsi / panduan)…" type="search">
-        <select aria-label="Filter grade" id="grade-filter">
+        <input type="search" id="search" aria-label="Cari trophy" placeholder="Cari trophy (nama / deskripsi / panduan)…">
+        <select id="grade-filter" aria-label="Filter grade">
           <option value="all">Semua grade</option>
           <option value="Platinum">Platinum</option>
           <option value="Gold">Gold</option>
           <option value="Silver">Silver</option>
           <option value="Bronze">Bronze</option>
         </select>
-        <select aria-label="Filter jenis" id="category-filter">
+        <select id="category-filter" aria-label="Filter jenis">
           <option value="all">Semua jenis</option>
           <option value="story">Cerita</option>
           <option value="side">Misi sampingan</option>
@@ -95,40 +97,40 @@
           <option value="misc">Lainnya</option>
           <option value="online">Online (tidak ada)</option>
         </select>
-        <select aria-label="Filter status" id="status-filter">
+        <select id="status-filter" aria-label="Filter status">
           <option value="all">Semua status</option>
           <option value="done">Tercapai</option>
           <option value="todo">Belum tercapai</option>
         </select>
-        <label class="chk"><input id="missable-filter" type="checkbox"> Hanya missable</label>
-        <label class="chk"><input id="unverified-filter" type="checkbox"> Hanya cara belum terverifikasi</label>
-        <label class="chk"><input checked id="spoiler-toggle" type="checkbox"> Sembunyikan spoiler cerita</label>
+        <label class="chk"><input type="checkbox" id="missable-filter"> Hanya missable</label>
+        <label class="chk"><input type="checkbox" id="unverified-filter"> Hanya cara belum terverifikasi</label>
+        <label class="chk"><input type="checkbox" id="spoiler-toggle" checked> Sembunyikan spoiler cerita</label>
       </div>
       <p class="count-line" id="spoiler-line">Spoiler cerita disembunyikan (blur) sampai trophy dicentang.</p>
 
       <div class="toolbar actions">
-        <button id="export-btn" type="button">Export progres (JSON)</button>
-        <button class="secondary" id="import-btn" type="button">Import progres (JSON)</button>
-        <input accept="application/json,.json" hidden id="import-file" type="file">
-        <button class="danger" id="reset-btn" type="button">Reset progres</button>
+        <button type="button" id="export-btn">Export progres (JSON)</button>
+        <button type="button" class="secondary" id="import-btn">Import progres (JSON)</button>
+        <input type="file" id="import-file" accept="application/json,.json" hidden>
+        <button type="button" class="danger" id="reset-btn">Reset progres</button>
         <span class="count-line" id="status-line" role="status"></span>
       </div>
 
       <p class="count-line" id="count-line">Menampilkan 0 dari 0 trophy.</p>
-      <div aria-live="polite" class="trophy-list" id="trophy-list"></div>
-      <p class="count-line" hidden id="online-note">Tidak ada trophy online — semua 55 trophy didapat dari single-player. Filter ini sengaja menampilkan daftar kosong.</p>
+      <div class="trophy-list" id="trophy-list" aria-live="polite"></div>
+      <p class="count-line" id="online-note" hidden>Tidak ada trophy online — semua 55 trophy didapat dari single-player. Filter ini sengaja menampilkan daftar kosong.</p>
     </section>
 
     <!-- Sumber rujukan (nama + URL); panduan ditulis ulang, bukan disalin -->
-    <section aria-labelledby="sources-title" class="panel">
+    <section class="panel" aria-labelledby="sources-title">
       <h2 id="sources-title">Sumber</h2>
       <p>Nama, deskripsi, dan grade trophy mengikuti daftar resmi. Panduan ditulis ulang dengan kata-kata sendiri — tidak ada kalimat panduan sumber yang disalin. Rujukan:</p>
       <ul class="sources">
-        <li><a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" rel="noopener noreferrer" target="_blank">Exophase — daftar resmi 55 trophy PS5</a> (sumber primer daftar)</li>
-        <li><a href="https://www.planetgta6.com/en/gta-6-trophies/" rel="noopener noreferrer" target="_blank">PlanetGTA6 — GTA 6 Trophies</a> (nama + deskripsi + grade)</li>
-        <li><a href="https://outputlag.com/guides/gta-6-trophy-list/" rel="noopener noreferrer" target="_blank">Output Lag — GTA 6 Trophy List</a> (nama + deskripsi resmi + grade)</li>
-        <li><a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" rel="noopener noreferrer" target="_blank">Push Square — GTA 6 Trophy Guide &amp; Roadmap</a> (panduan per trophy)</li>
-        <li><a href="https://www.pushsquare.com/guides/gta-6-100-completion-checklist" rel="noopener noreferrer" target="_blank">Push Square — GTA 6 100% Completion Checklist</a> (angka checklist 100%)</li>
+        <li><a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" target="_blank" rel="noopener noreferrer">Exophase — daftar resmi 55 trophy PS5</a> (sumber primer daftar)</li>
+        <li><a href="https://www.planetgta6.com/en/gta-6-trophies/" target="_blank" rel="noopener noreferrer">PlanetGTA6 — GTA 6 Trophies</a> (nama + deskripsi + grade)</li>
+        <li><a href="https://outputlag.com/guides/gta-6-trophy-list/" target="_blank" rel="noopener noreferrer">Output Lag — GTA 6 Trophy List</a> (nama + deskripsi resmi + grade)</li>
+        <li><a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" target="_blank" rel="noopener noreferrer">Push Square — GTA 6 Trophy Guide &amp; Roadmap</a> (panduan per trophy)</li>
+        <li><a href="https://www.pushsquare.com/guides/gta-6-100-completion-checklist" target="_blank" rel="noopener noreferrer">Push Square — GTA 6 100% Completion Checklist</a> (angka checklist 100%)</li>
       </ul>
       <p class="fineprint">Catatan verifikasi: grade Maximum Withdrawal dipakai Silver (Exophase, PlanetGTA6, Output Lag, dan mayoritas sumber sepakat; Push Square sempat menulis Bronze). Metode unlock 7 trophy ditandai &ldquo;belum terverifikasi&rdquo; karena hanya laporan komunitas awal saat peluncuran. Rarity/persentase Exophase tidak dipakai karena angkanya tidak masuk akal di hari peluncuran.</p>
     </section>

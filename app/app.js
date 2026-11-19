@@ -1,125 +1,113 @@
-/* Panduan Trophy GTA VI — app/app.js
-   Ditulis ulang dari nol pada ronde rebuild-2 (20 Nov 2026), di sesi
-   terekam R3. Bukan salinan naskah lama: struktur, nama fungsi, dan
-   nama variabel semuanya baru, tetapi perilaku dipertahankan penuh.
-   Halaman ini statis dan offline — datanya berasal dari
-   data/trophies.json (55 trophy, sumber: riset.md job
-   2026-11-19-gta6-trophy-guide-01). Centang tersimpan di
-   localStorage. Filter juga bisa dipreset lewat query URL, misal
-   ?grade=Silver&category=activity&missable=1&spoiler=0 — dipakai
-   untuk tangkapan layar dan tautan langsung. Tidak ada logo atau
-   artwork resmi Rockstar di sini; ikon hanya teks dan CSS. */
-(() => {
+/* Panduan Trophy GTA VI — logika aplikasi (app/app.js).
+   Penulisan ketiga, ronde rebuild-3, 20 Nov 2026, di sesi terekam R4.
+   Naskah ini ditulis dari nol lagi: fungsi-fungsi deklaratif biasa,
+   nama-nama baru, dan alur yang disusun ulang. Perilaku luarnya sama
+   persis dengan ronde sebelumnya: teks antarmuka, kunci localStorage,
+   bentuk berkas export, dan API window.GTA6Guide tidak berubah.
+   Data trophy dimuat dari data/trophies.json; halaman ini statis dan
+   offline, tanpa satu pun permintaan jaringan. Filter bisa dipreset
+   lewat query URL (misalnya ?grade=Silver&spoiler=0) untuk tangkapan
+   layar. Tidak ada logo atau artwork resmi Rockstar di sini. */
+(function () {
   "use strict";
 
-  const SAVE_KEY = "gta6-trophy-guide-v1";
-  const DATA_PATH = "data/trophies.json";
-  const GRADE_ORDER = ["Platinum", "Gold", "Silver", "Bronze"];
-  const KNOWN_GRADES = new Set(GRADE_ORDER);
+  var KUNCI_SIMpan = "gta6-trophy-guide-v1";
+  var JALUR_DATA = "data/trophies.json";
+  var URUTAN_GRADE = ["Platinum", "Gold", "Silver", "Bronze"];
+  var GRADE_DIKENAL = {};
+  URUTAN_GRADE.forEach(function (g) { GRADE_DIKENAL[g] = true; });
 
-  /* ============ Fungsi murni: tidak menyentuh DOM ============ */
+  /* ---------- logika murni (tanpa DOM) ---------- */
 
-  // Rangkuman progres dari daftar trophy + peta centang.
-  // Mengembalikan jumlah selesai, total, persen, status platinum,
-  // dan hitungan selesai/total untuk tiap grade.
-  const summarizeProgress = (list, doneMap) => {
-    const perGrade = Object.fromEntries(
-      GRADE_ORDER.map((grade) => [grade, { done: 0, total: 0 }]),
-    );
-    let finished = 0;
-    for (const trophy of list) {
-      const slot = perGrade[trophy.grade] ?? (perGrade[trophy.grade] = { done: 0, total: 0 });
-      slot.total += 1;
-      if (doneMap[trophy.id]) {
-        finished += 1;
-        slot.done += 1;
+  function hitungProgres(daftar, centang) {
+    var perGrade = {};
+    URUTAN_GRADE.forEach(function (g) { perGrade[g] = { done: 0, total: 0 }; });
+    var selesai = 0;
+    daftar.forEach(function (t) {
+      if (!perGrade[t.grade]) perGrade[t.grade] = { done: 0, total: 0 };
+      perGrade[t.grade].total += 1;
+      if (centang[t.id]) {
+        selesai += 1;
+        perGrade[t.grade].done += 1;
       }
-    }
-    const total = list.length;
+    });
+    var total = daftar.length;
     return {
-      done: finished,
-      total,
-      pct: total === 0 ? 0 : Math.round((finished / total) * 100),
-      platinum: total > 0 && finished === total,
+      done: selesai,
+      total: total,
+      pct: total === 0 ? 0 : Math.round((selesai / total) * 100),
+      platinum: total > 0 && selesai === total,
       byGrade: perGrade,
     };
-  };
+  }
 
-  // Menyaring daftar trophy menurut opsi: grade, category,
-  // missableOnly, unverifiedOnly, status (done/todo), query teks,
-  // dan peta centang. Kategori "online" tidak pernah cocok dengan
-  // trophy mana pun — game ini memang tidak punya trophy online.
-  const selectTrophies = (list, opts) => {
-    const needle = (opts.query ?? "").trim().toLowerCase();
-    return list.filter((trophy) => {
-      if (opts.grade && opts.grade !== "all" && trophy.grade !== opts.grade) return false;
-      if (opts.category && opts.category !== "all" && trophy.category !== opts.category) return false;
-      if (opts.missableOnly && !trophy.missable) return false;
-      if (opts.unverifiedOnly && !trophy.unverified) return false;
-      if (opts.status === "done" && !opts.checked[trophy.id]) return false;
-      if (opts.status === "todo" && opts.checked[trophy.id]) return false;
-      if (needle) {
-        const haystack = `${trophy.name} ${trophy.description} ${trophy.guide ?? ""}`.toLowerCase();
-        if (!haystack.includes(needle)) return false;
+  function saringDaftar(daftar, opsi) {
+    var kata = (opsi.query || "").trim().toLowerCase();
+    var hasil = [];
+    daftar.forEach(function (t) {
+      if (opsi.grade && opsi.grade !== "all" && t.grade !== opsi.grade) return;
+      if (opsi.category && opsi.category !== "all" && t.category !== opsi.category) return;
+      if (opsi.missableOnly && !t.missable) return;
+      if (opsi.unverifiedOnly && !t.unverified) return;
+      if (opsi.status === "done" && !opsi.checked[t.id]) return;
+      if (opsi.status === "todo" && opsi.checked[t.id]) return;
+      if (kata) {
+        var cari = (t.name + " " + t.description + " " + (t.guide || "")).toLowerCase();
+        if (cari.indexOf(kata) === -1) return;
       }
-      return true;
+      hasil.push(t);
     });
-  };
+    return hasil;
+  }
 
-  // Membaca preset filter dari query string URL (untuk tangkapan layar).
-  // Hanya grade yang dikenal yang diterima; sisanya diabaikan diam-diam.
-  const presetsFromQuery = (search) => {
-    const params = new URLSearchParams(search ?? "");
-    const found = {};
-    const grade = params.get("grade");
-    if (grade && KNOWN_GRADES.has(grade)) found.grade = grade;
-    const category = params.get("category");
-    if (category) found.category = category;
-    if (params.get("missable") === "1") found.missableOnly = true;
-    if (params.get("unverified") === "1") found.unverifiedOnly = true;
-    if (params.get("spoiler") === "0") found.hideSpoilers = false;
-    const query = params.get("q");
-    if (query) found.query = query;
-    return found;
-  };
+  function presetDariUrl(pencarian) {
+    var param = new URLSearchParams(pencarian || "");
+    var temu = {};
+    var grade = param.get("grade");
+    if (grade && GRADE_DIKENAL[grade]) temu.grade = grade;
+    var kategori = param.get("category");
+    if (kategori) temu.category = kategori;
+    if (param.get("missable") === "1") temu.missableOnly = true;
+    if (param.get("unverified") === "1") temu.unverifiedOnly = true;
+    if (param.get("spoiler") === "0") temu.hideSpoilers = false;
+    var q = param.get("q");
+    if (q) temu.query = q;
+    return temu;
+  }
 
-  // Memeriksa bentuk payload JSON: dipakai saat import progres dan
-  // saat memvalidasi data/trophies.json. Objek wajib membawa array
-  // trophies yang tiap butirnya punya id string.
-  const checkImportShape = (payload) => {
-    if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+  function periksaBentukImpor(muatan) {
+    if (!muatan || typeof muatan !== "object" || Array.isArray(muatan)) {
       return { ok: false, error: "File bukan objek JSON yang valid." };
     }
-    if (!Array.isArray(payload.trophies)) {
+    if (!Array.isArray(muatan.trophies)) {
       return { ok: false, error: "Field 'trophies' tidak ditemukan / bukan array." };
     }
-    for (let index = 0; index < payload.trophies.length; index += 1) {
-      if (typeof payload.trophies[index].id !== "string") {
-        return { ok: false, error: `Trophy ke-${index + 1} tidak punya id string.` };
+    for (var i = 0; i < muatan.trophies.length; i += 1) {
+      if (typeof muatan.trophies[i].id !== "string") {
+        return { ok: false, error: "Trophy ke-" + (i + 1) + " tidak punya id string." };
       }
     }
     return { ok: true };
-  };
+  }
 
-  // Menyusun objek export dari state saat ini (diunduh sebagai JSON).
-  const makeExportPayload = (list, doneMap, hideSpoilers) => ({
-    app: "gta6-trophy-guide",
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    hideSpoilers: Boolean(hideSpoilers),
-    trophies: list.map((trophy) => ({
-      id: trophy.id,
-      name: trophy.name,
-      checked: Boolean(doneMap[trophy.id]),
-    })),
-  });
+  function rakitEkspor(daftar, centang, sembunyikanSpoiler) {
+    return {
+      app: "gta6-trophy-guide",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      hideSpoilers: Boolean(sembunyikanSpoiler),
+      trophies: daftar.map(function (t) {
+        return { id: t.id, name: t.name, checked: Boolean(centang[t.id]) };
+      }),
+    };
+  }
 
-  /* ============ State aplikasi ============ */
+  /* ---------- state ---------- */
 
-  const appState = {
-    items: [],
-    done: {},
-    hideSpoilers: true,
+  var keadaan = {
+    daftar: [],
+    centang: {},
+    sembunyikanSpoiler: true,
     filter: {
       grade: "all",
       category: "all",
@@ -130,375 +118,395 @@
     },
   };
 
-  const readDone = () => {
+  var el = {};
+
+  function ambilEl(id) { return document.getElementById(id); }
+
+  function muatCentang() {
     try {
-      const raw = localStorage.getItem(SAVE_KEY);
-      if (!raw) return {};
-      const parsed = JSON.parse(raw);
-      return parsed && typeof parsed === "object" ? parsed : {};
-    } catch {
+      var mentah = localStorage.getItem(KUNCI_SIMpan);
+      if (!mentah) return {};
+      var olah = JSON.parse(mentah);
+      return olah && typeof olah === "object" ? olah : {};
+    } catch (e) {
       return {};
     }
-  };
+  }
 
-  const writeDone = () => {
+  function simpanCentang() {
     try {
-      localStorage.setItem(SAVE_KEY, JSON.stringify(appState.done));
-    } catch {
-      showStatus("Gagal menyimpan progres ke browser (penyimpanan diblokir).");
+      localStorage.setItem(KUNCI_SIMpan, JSON.stringify(keadaan.centang));
+    } catch (e) {
+      tampilStatus("Gagal menyimpan progres ke browser (penyimpanan diblokir).");
     }
-  };
+  }
 
-  const readPrefs = () => {
+  function muatPreferensi() {
     try {
-      const raw = localStorage.getItem(`${SAVE_KEY}:settings`);
-      if (!raw) return;
-      const prefs = JSON.parse(raw);
-      if (prefs && typeof prefs.hideSpoilers === "boolean") {
-        appState.hideSpoilers = prefs.hideSpoilers;
+      var mentah = localStorage.getItem(KUNCI_SIMpan + ":settings");
+      if (!mentah) return;
+      var pref = JSON.parse(mentah);
+      if (pref && typeof pref.hideSpoilers === "boolean") {
+        keadaan.sembunyikanSpoiler = pref.hideSpoilers;
       }
-    } catch {
-      /* abaikan: pakai default */
+    } catch (e) {
+      /* pakai bawaan */
     }
-  };
+  }
 
-  const writePrefs = () => {
+  function simpanPreferensi() {
     try {
       localStorage.setItem(
-        `${SAVE_KEY}:settings`,
-        JSON.stringify({ hideSpoilers: appState.hideSpoilers }),
+        KUNCI_SIMpan + ":settings",
+        JSON.stringify({ hideSpoilers: keadaan.sembunyikanSpoiler }),
       );
-    } catch {
+    } catch (e) {
       /* abaikan */
     }
-  };
+  }
 
-  /* ============ Render ============ */
+  function tampilStatus(pesan) {
+    if (el.status) el.status.textContent = pesan;
+  }
 
-  const nodes = {};
-  const byId = (id) => document.getElementById(id);
+  /* ---------- render ---------- */
 
-  const paintProgress = () => {
-    const summary = summarizeProgress(appState.items, appState.done);
-    nodes.progressText.textContent = `${summary.done} / ${summary.total} trophy (${summary.pct}%)`;
-    nodes.progressFill.style.width = `${summary.pct}%`;
-    nodes.progressFill.parentNode.setAttribute("aria-valuenow", String(summary.pct));
-    nodes.progressSub.textContent = summary.platinum
-      ? "Platinum diraih! Semua trophy selesai — Vice Got a Price! terbuka."
-      : summary.total === 0
-        ? "Data trophy belum dimuat."
-        : `${summary.total - summary.done} trophy lagi menuju Platinum.`;
-    document.title = summary.done > 0
-      ? `(${summary.done}/${summary.total}) Panduan Trophy GTA VI`
-      : "Panduan Trophy GTA VI — Tracker 55 Trophy PS5";
-    nodes.gradeBreakdown.replaceChildren();
-    for (const grade of GRADE_ORDER) {
-      const slot = summary.byGrade[grade] ?? { done: 0, total: 0 };
-      const item = document.createElement("li");
-      item.textContent = `${grade}: ${slot.done}/${slot.total}`;
-      nodes.gradeBreakdown.appendChild(item);
-    }
-  };
+  function buatLencana(teks, kelasTambahan) {
+    var lencana = document.createElement("span");
+    lencana.className = "badge " + kelasTambahan;
+    lencana.textContent = teks;
+    return lencana;
+  }
 
-  const tagBadge = (text, extraClass) => {
-    const badge = document.createElement("span");
-    badge.className = `badge ${extraClass}`;
-    badge.textContent = text;
-    return badge;
-  };
-
-  const buildCard = (trophy) => {
-    const isDone = Boolean(appState.done[trophy.id]);
-    const card = document.createElement("article");
-    // Trophy cerita di-blur selama belum didapat; begitu dicentang,
-    // nama + deskripsi + panduannya terbuka ("sampai didapat").
-    card.className = `trophy${isDone ? " done" : ""}${trophy.spoiler && !isDone ? " spoiler" : ""}`;
-    card.dataset.id = trophy.id;
-
-    const checkCell = document.createElement("div");
-    checkCell.className = "trophy-check";
-    const box = document.createElement("input");
-    box.type = "checkbox";
-    box.checked = isDone;
-    box.setAttribute("aria-label", `Tandai trophy ${trophy.name} sebagai tercapai`);
-    box.addEventListener("change", () => {
-      if (box.checked) appState.done[trophy.id] = true;
-      else delete appState.done[trophy.id];
-      writeDone();
-      paintEverything();
-    });
-    checkCell.appendChild(box);
-    card.appendChild(checkCell);
-
-    const body = document.createElement("div");
-
-    const heading = document.createElement("h3");
-    heading.className = "trophy-name";
-    heading.textContent = trophy.name;
-    body.appendChild(heading);
-
-    const meta = document.createElement("div");
-    meta.className = "trophy-meta";
-    meta.appendChild(tagBadge(trophy.grade || "—", trophy.grade || "Bronze"));
-    if (trophy.missable) meta.appendChild(tagBadge("Missable", "missable"));
-    if (trophy.unverified) meta.appendChild(tagBadge("Cara belum terverifikasi", "unverified"));
-    meta.appendChild(tagBadge(trophy.category || "misc", "cat"));
-    body.appendChild(meta);
-
-    const desc = document.createElement("p");
-    desc.className = "trophy-desc";
-    desc.textContent = trophy.description || "";
-    body.appendChild(desc);
-
-    if (trophy.spoiler && !isDone) {
-      const hint = document.createElement("p");
-      hint.className = "spoiler-note";
-      hint.textContent = "Trophy cerita (hidden) — nama, deskripsi, dan panduan disembunyikan oleh pengaturan spoiler sampai trophy ini dicentang.";
-      body.appendChild(hint);
-    }
-    if (trophy.missable && trophy.missableNote) {
-      const warn = document.createElement("p");
-      warn.className = "trophy-guide missable-note";
-      const label = document.createElement("b");
-      label.textContent = "Perhatian missable: ";
-      warn.append(label, document.createTextNode(trophy.missableNote));
-      body.appendChild(warn);
-    }
-    if (trophy.guide) {
-      const guide = document.createElement("p");
-      guide.className = "trophy-guide";
-      const label = document.createElement("b");
-      label.textContent = "Panduan: ";
-      guide.append(label, document.createTextNode(trophy.guide));
-      body.appendChild(guide);
-    }
-    if (trophy.guideSource) {
-      const source = document.createElement("p");
-      source.className = "trophy-source";
-      source.textContent = `Sumber: ${trophy.guideSource.label || trophy.guideSource.url || ""}`;
-      if (trophy.guideSource.url) {
-        source.appendChild(document.createTextNode(" — "));
-        const link = document.createElement("a");
-        link.href = trophy.guideSource.url;
-        link.textContent = trophy.guideSource.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        source.appendChild(link);
-      }
-      body.appendChild(source);
-    }
-
-    card.appendChild(body);
-    return card;
-  };
-
-  const paintList = () => {
-    const visible = selectTrophies(appState.items, {
-      ...appState.filter,
-      checked: appState.done,
-    });
-    nodes.list.replaceChildren();
-    if (appState.items.length === 0) {
-      nodes.list.innerHTML = '<div class="empty-state">Data trophy belum tersedia. Periksa file data/trophies.json.</div>';
-    } else if (visible.length === 0) {
-      nodes.list.innerHTML = '<div class="empty-state">Tidak ada trophy yang cocok dengan filter/pencarian saat ini.</div>';
+  function gambarProgres() {
+    var ringkas = hitungProgres(keadaan.daftar, keadaan.centang);
+    el.progressText.textContent = ringkas.done + " / " + ringkas.total + " trophy (" + ringkas.pct + "%)";
+    el.progressFill.style.width = ringkas.pct + "%";
+    el.progressFill.parentNode.setAttribute("aria-valuenow", String(ringkas.pct));
+    if (ringkas.platinum) {
+      el.progressSub.textContent = "Platinum diraih! Semua trophy selesai — Vice Got a Price! terbuka.";
+    } else if (ringkas.total === 0) {
+      el.progressSub.textContent = "Data trophy belum dimuat.";
     } else {
-      for (const trophy of visible) nodes.list.appendChild(buildCard(trophy));
+      el.progressSub.textContent = (ringkas.total - ringkas.done) + " trophy lagi menuju Platinum.";
     }
-    nodes.countLine.textContent = `Menampilkan ${visible.length} dari ${appState.items.length} trophy.`;
-    const stillHidden = appState.items.filter((t) => t.spoiler && !appState.done[t.id]).length;
-    nodes.spoilerLine.textContent = appState.hideSpoilers
-      ? `Spoiler cerita disembunyikan (blur): ${stillHidden} trophy hidden masih tertutup sampai dicentang.`
-      : `Spoiler cerita ditampilkan: semua ${appState.items.length} trophy terlihat.`;
-    nodes.onlineNote.hidden = appState.filter.category !== "online";
-  };
+    document.title = ringkas.done > 0
+      ? "(" + ringkas.done + "/" + ringkas.total + ") Panduan Trophy GTA VI"
+      : "Panduan Trophy GTA VI — Tracker 55 Trophy PS5";
+    el.gradeBreakdown.replaceChildren();
+    URUTAN_GRADE.forEach(function (grade) {
+      var slot = ringkas.byGrade[grade] || { done: 0, total: 0 };
+      var baris = document.createElement("li");
+      baris.textContent = grade + ": " + slot.done + "/" + slot.total;
+      el.gradeBreakdown.appendChild(baris);
+    });
+  }
 
-  const paintSpoilerSetting = () => {
-    document.body.classList.toggle("spoilers-on", appState.hideSpoilers);
-    nodes.spoilerToggle.checked = appState.hideSpoilers;
-  };
+  function rakitKartu(t) {
+    var sudah = Boolean(keadaan.centang[t.id]);
+    var kartu = document.createElement("article");
+    // Trophy cerita tetap blur selama belum didapat; begitu dicentang,
+    // nama + deskripsi + panduannya terbuka.
+    kartu.className = "trophy" + (sudah ? " done" : "") + (t.spoiler && !sudah ? " spoiler" : "");
+    kartu.dataset.id = t.id;
 
-  const paintEverything = () => {
-    paintProgress();
-    paintList();
-    paintSpoilerSetting();
-  };
+    var selCentang = document.createElement("div");
+    selCentang.className = "trophy-check";
+    var kotak = document.createElement("input");
+    kotak.type = "checkbox";
+    kotak.checked = sudah;
+    kotak.setAttribute("aria-label", "Tandai trophy " + t.name + " sebagai tercapai");
+    kotak.addEventListener("change", function () {
+      if (kotak.checked) keadaan.centang[t.id] = true;
+      else delete keadaan.centang[t.id];
+      simpanCentang();
+      gambarSemua();
+    });
+    selCentang.appendChild(kotak);
+    kartu.appendChild(selCentang);
 
-  const showStatus = (message) => {
-    if (nodes.status) nodes.status.textContent = message;
-  };
+    var isi = document.createElement("div");
 
-  /* ============ Export / Import ============ */
+    var judul = document.createElement("h3");
+    judul.className = "trophy-name";
+    judul.textContent = t.name;
+    isi.appendChild(judul);
 
-  const saveJsonFile = (filename, payload) => {
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = filename;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  };
+    var meta = document.createElement("div");
+    meta.className = "trophy-meta";
+    meta.appendChild(buatLencana(t.grade || "—", t.grade || "Bronze"));
+    if (t.missable) meta.appendChild(buatLencana("Missable", "missable"));
+    if (t.unverified) meta.appendChild(buatLencana("Cara belum terverifikasi", "unverified"));
+    meta.appendChild(buatLencana(t.category || "misc", "cat"));
+    isi.appendChild(meta);
 
-  const runExport = () => {
-    saveJsonFile(
+    var deskripsi = document.createElement("p");
+    deskripsi.className = "trophy-desc";
+    deskripsi.textContent = t.description || "";
+    isi.appendChild(deskripsi);
+
+    if (t.spoiler && !sudah) {
+      var petunjuk = document.createElement("p");
+      petunjuk.className = "spoiler-note";
+      petunjuk.textContent = "Trophy cerita (hidden) — nama, deskripsi, dan panduan disembunyikan oleh pengaturan spoiler sampai trophy ini dicentang.";
+      isi.appendChild(petunjuk);
+    }
+    if (t.missable && t.missableNote) {
+      var peringat = document.createElement("p");
+      peringat.className = "trophy-guide missable-note";
+      var labelPeringat = document.createElement("b");
+      labelPeringat.textContent = "Perhatian missable: ";
+      peringat.append(labelPeringat, document.createTextNode(t.missableNote));
+      isi.appendChild(peringat);
+    }
+    if (t.guide) {
+      var panduan = document.createElement("p");
+      panduan.className = "trophy-guide";
+      var labelPanduan = document.createElement("b");
+      labelPanduan.textContent = "Panduan: ";
+      panduan.append(labelPanduan, document.createTextNode(t.guide));
+      isi.appendChild(panduan);
+    }
+    if (t.guideSource) {
+      var sumber = document.createElement("p");
+      sumber.className = "trophy-source";
+      sumber.textContent = "Sumber: " + (t.guideSource.label || t.guideSource.url || "");
+      if (t.guideSource.url) {
+        sumber.appendChild(document.createTextNode(" — "));
+        var tautan = document.createElement("a");
+        tautan.href = t.guideSource.url;
+        tautan.textContent = t.guideSource.url;
+        tautan.target = "_blank";
+        tautan.rel = "noopener noreferrer";
+        sumber.appendChild(tautan);
+      }
+      isi.appendChild(sumber);
+    }
+
+    kartu.appendChild(isi);
+    return kartu;
+  }
+
+  function gambarDaftar() {
+    var tampak = saringDaftar(keadaan.daftar, {
+      grade: keadaan.filter.grade,
+      category: keadaan.filter.category,
+      missableOnly: keadaan.filter.missableOnly,
+      unverifiedOnly: keadaan.filter.unverifiedOnly,
+      status: keadaan.filter.status,
+      query: keadaan.filter.query,
+      checked: keadaan.centang,
+    });
+    el.list.replaceChildren();
+    if (keadaan.daftar.length === 0) {
+      el.list.innerHTML = '<div class="empty-state">Data trophy belum tersedia. Periksa file data/trophies.json.</div>';
+    } else if (tampak.length === 0) {
+      el.list.innerHTML = '<div class="empty-state">Tidak ada trophy yang cocok dengan filter/pencarian saat ini.</div>';
+    } else {
+      tampak.forEach(function (t) { el.list.appendChild(rakitKartu(t)); });
+    }
+    el.countLine.textContent = "Menampilkan " + tampak.length + " dari " + keadaan.daftar.length + " trophy.";
+    var masihTertutup = keadaan.daftar.filter(function (t) {
+      return t.spoiler && !keadaan.centang[t.id];
+    }).length;
+    el.spoilerLine.textContent = keadaan.sembunyikanSpoiler
+      ? "Spoiler cerita disembunyikan (blur): " + masihTertutup + " trophy hidden masih tertutup sampai dicentang."
+      : "Spoiler cerita ditampilkan: semua " + keadaan.daftar.length + " trophy terlihat.";
+    el.onlineNote.hidden = keadaan.filter.category !== "online";
+  }
+
+  function terapkanSpoiler() {
+    document.body.classList.toggle("spoilers-on", keadaan.sembunyikanSpoiler);
+    el.spoilerToggle.checked = keadaan.sembunyikanSpoiler;
+  }
+
+  function gambarSemua() {
+    gambarProgres();
+    gambarDaftar();
+    terapkanSpoiler();
+  }
+
+  /* ---------- export / import ---------- */
+
+  function unduhJson(namaBerkas, muatan) {
+    var blob = new Blob([JSON.stringify(muatan, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var jangkar = document.createElement("a");
+    jangkar.href = url;
+    jangkar.download = namaBerkas;
+    document.body.appendChild(jangkar);
+    jangkar.click();
+    document.body.removeChild(jangkar);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function eksporProgres() {
+    unduhJson(
       "gta6-trophy-progress.json",
-      makeExportPayload(appState.items, appState.done, appState.hideSpoilers),
+      rakitEkspor(keadaan.daftar, keadaan.centang, keadaan.sembunyikanSpoiler),
     );
-    showStatus(`Progres diekspor (${Object.keys(appState.done).length} trophy tercapai).`);
-  };
+    tampilStatus("Progres diekspor (" + Object.keys(keadaan.centang).length + " trophy tercapai).");
+  }
 
-  const runImport = (file) => {
-    const reader = new FileReader();
-    reader.onload = () => {
+  function imporProgres(berkas) {
+    var pembaca = new FileReader();
+    pembaca.onload = function () {
       try {
-        const payload = JSON.parse(reader.result);
-        const verdict = checkImportShape(payload);
-        if (!verdict.ok) {
-          showStatus(`Import gagal: ${verdict.error}`);
+        var muatan = JSON.parse(pembaca.result);
+        var putusan = periksaBentukImpor(muatan);
+        if (!putusan.ok) {
+          tampilStatus("Import gagal: " + putusan.error);
           return;
         }
-        let imported = 0;
-        for (const row of payload.trophies) {
-          if (row.checked) {
-            appState.done[row.id] = true;
-            imported += 1;
+        var terimpor = 0;
+        muatan.trophies.forEach(function (baris) {
+          if (baris.checked) {
+            keadaan.centang[baris.id] = true;
+            terimpor += 1;
           } else {
-            delete appState.done[row.id];
+            delete keadaan.centang[baris.id];
           }
+        });
+        if (typeof muatan.hideSpoilers === "boolean") {
+          keadaan.sembunyikanSpoiler = muatan.hideSpoilers;
         }
-        if (typeof payload.hideSpoilers === "boolean") {
-          appState.hideSpoilers = payload.hideSpoilers;
-        }
-        writeDone();
-        writePrefs();
-        paintEverything();
-        showStatus(`Import berhasil: ${imported} trophy tercapai dimuat dari file.`);
-      } catch {
-        showStatus("Import gagal: file bukan JSON yang valid.");
+        simpanCentang();
+        simpanPreferensi();
+        gambarSemua();
+        tampilStatus("Import berhasil: " + terimpor + " trophy tercapai dimuat dari file.");
+      } catch (e) {
+        tampilStatus("Import gagal: file bukan JSON yang valid.");
       }
     };
-    reader.onerror = () => showStatus("Import gagal: file tidak bisa dibaca.");
-    reader.readAsText(file);
-  };
+    pembaca.onerror = function () { tampilStatus("Import gagal: file tidak bisa dibaca."); };
+    pembaca.readAsText(berkas);
+  }
 
-  /* ============ Boot ============ */
+  /* ---------- boot ---------- */
 
-  const syncControls = () => {
-    nodes.gradeFilter.value = appState.filter.grade;
-    nodes.categoryFilter.value = appState.filter.category;
-    nodes.missableFilter.checked = appState.filter.missableOnly;
-    nodes.unverifiedFilter.checked = appState.filter.unverifiedOnly;
-    nodes.search.value = appState.filter.query;
-  };
+  function sinkronKontrol() {
+    el.gradeFilter.value = keadaan.filter.grade;
+    el.categoryFilter.value = keadaan.filter.category;
+    el.missableFilter.checked = keadaan.filter.missableOnly;
+    el.unverifiedFilter.checked = keadaan.filter.unverifiedOnly;
+    el.search.value = keadaan.filter.query;
+  }
 
-  const boot = () => {
-    Object.assign(nodes, {
-      progressText: byId("progress-text"),
-      progressFill: byId("progress-fill"),
-      progressSub: byId("progress-sub"),
-      gradeBreakdown: byId("grade-breakdown"),
-      list: byId("trophy-list"),
-      countLine: byId("count-line"),
-      spoilerLine: byId("spoiler-line"),
-      onlineNote: byId("online-note"),
-      status: byId("status-line"),
-      spoilerToggle: byId("spoiler-toggle"),
-      search: byId("search"),
-      gradeFilter: byId("grade-filter"),
-      categoryFilter: byId("category-filter"),
-      missableFilter: byId("missable-filter"),
-      unverifiedFilter: byId("unverified-filter"),
-      statusFilter: byId("status-filter"),
-      exportBtn: byId("export-btn"),
-      importBtn: byId("import-btn"),
-      importFile: byId("import-file"),
-      resetBtn: byId("reset-btn"),
+  function mulai() {
+    el.progressText = ambilEl("progress-text");
+    el.progressFill = ambilEl("progress-fill");
+    el.progressSub = ambilEl("progress-sub");
+    el.gradeBreakdown = ambilEl("grade-breakdown");
+    el.list = ambilEl("trophy-list");
+    el.countLine = ambilEl("count-line");
+    el.spoilerLine = ambilEl("spoiler-line");
+    el.onlineNote = ambilEl("online-note");
+    el.status = ambilEl("status-line");
+    el.spoilerToggle = ambilEl("spoiler-toggle");
+    el.search = ambilEl("search");
+    el.gradeFilter = ambilEl("grade-filter");
+    el.categoryFilter = ambilEl("category-filter");
+    el.missableFilter = ambilEl("missable-filter");
+    el.unverifiedFilter = ambilEl("unverified-filter");
+    el.statusFilter = ambilEl("status-filter");
+    el.exportBtn = ambilEl("export-btn");
+    el.importBtn = ambilEl("import-btn");
+    el.importFile = ambilEl("import-file");
+    el.resetBtn = ambilEl("reset-btn");
+
+    keadaan.centang = muatCentang();
+    muatPreferensi();
+
+    // Preset URL mengalahkan preferensi tersimpan (untuk tangkapan layar).
+    var preset = presetDariUrl(window.location.search);
+    if (preset.grade) keadaan.filter.grade = preset.grade;
+    if (preset.category) keadaan.filter.category = preset.category;
+    if (preset.missableOnly) keadaan.filter.missableOnly = true;
+    if (preset.unverifiedOnly) keadaan.filter.unverifiedOnly = true;
+    if (typeof preset.hideSpoilers === "boolean") keadaan.sembunyikanSpoiler = preset.hideSpoilers;
+    if (preset.query) keadaan.filter.query = preset.query;
+    sinkronKontrol();
+
+    el.search.addEventListener("input", function () {
+      keadaan.filter.query = el.search.value;
+      gambarDaftar();
+    });
+    el.gradeFilter.addEventListener("change", function () {
+      keadaan.filter.grade = el.gradeFilter.value;
+      gambarDaftar();
+    });
+    el.categoryFilter.addEventListener("change", function () {
+      keadaan.filter.category = el.categoryFilter.value;
+      gambarDaftar();
+    });
+    el.missableFilter.addEventListener("change", function () {
+      keadaan.filter.missableOnly = el.missableFilter.checked;
+      gambarDaftar();
+    });
+    el.unverifiedFilter.addEventListener("change", function () {
+      keadaan.filter.unverifiedOnly = el.unverifiedFilter.checked;
+      gambarDaftar();
+    });
+    el.statusFilter.addEventListener("change", function () {
+      keadaan.filter.status = el.statusFilter.value;
+      gambarDaftar();
+    });
+    el.spoilerToggle.addEventListener("change", function () {
+      keadaan.sembunyikanSpoiler = el.spoilerToggle.checked;
+      simpanPreferensi();
+      terapkanSpoiler();
+      gambarDaftar();
+      tampilStatus(keadaan.sembunyikanSpoiler ? "Spoiler cerita disembunyikan." : "Spoiler cerita ditampilkan.");
+    });
+    el.exportBtn.addEventListener("click", eksporProgres);
+    el.importBtn.addEventListener("click", function () { el.importFile.click(); });
+    el.importFile.addEventListener("change", function () {
+      if (el.importFile.files.length > 0) imporProgres(el.importFile.files[0]);
+      el.importFile.value = "";
+    });
+    el.resetBtn.addEventListener("click", function () {
+      if (window.confirm("Hapus semua progres checklist? Tindakan ini tidak bisa dibatalkan.")) {
+        keadaan.centang = {};
+        simpanCentang();
+        gambarSemua();
+        tampilStatus("Progres direset.");
+      }
     });
 
-    appState.done = readDone();
-    readPrefs();
-
-    // Preset URL mengalahkan pengaturan tersimpan (untuk tangkapan layar).
-    const presets = presetsFromQuery(window.location.search);
-    if (presets.grade) appState.filter.grade = presets.grade;
-    if (presets.category) appState.filter.category = presets.category;
-    if (presets.missableOnly) appState.filter.missableOnly = true;
-    if (presets.unverifiedOnly) appState.filter.unverifiedOnly = true;
-    if (typeof presets.hideSpoilers === "boolean") appState.hideSpoilers = presets.hideSpoilers;
-    if (presets.query) appState.filter.query = presets.query;
-    syncControls();
-
-    const rerenderList = () => paintList();
-    const bindings = [
-      [nodes.search, "input", () => { appState.filter.query = nodes.search.value; rerenderList(); }],
-      [nodes.gradeFilter, "change", () => { appState.filter.grade = nodes.gradeFilter.value; rerenderList(); }],
-      [nodes.categoryFilter, "change", () => { appState.filter.category = nodes.categoryFilter.value; rerenderList(); }],
-      [nodes.missableFilter, "change", () => { appState.filter.missableOnly = nodes.missableFilter.checked; rerenderList(); }],
-      [nodes.unverifiedFilter, "change", () => { appState.filter.unverifiedOnly = nodes.unverifiedFilter.checked; rerenderList(); }],
-      [nodes.statusFilter, "change", () => { appState.filter.status = nodes.statusFilter.value; rerenderList(); }],
-      [nodes.spoilerToggle, "change", () => {
-        appState.hideSpoilers = nodes.spoilerToggle.checked;
-        writePrefs();
-        paintSpoilerSetting();
-        paintList();
-        showStatus(appState.hideSpoilers ? "Spoiler cerita disembunyikan." : "Spoiler cerita ditampilkan.");
-      }],
-      [nodes.exportBtn, "click", runExport],
-      [nodes.importBtn, "click", () => nodes.importFile.click()],
-      [nodes.importFile, "change", () => {
-        if (nodes.importFile.files.length > 0) runImport(nodes.importFile.files[0]);
-        nodes.importFile.value = "";
-      }],
-      [nodes.resetBtn, "click", () => {
-        if (window.confirm("Hapus semua progres checklist? Tindakan ini tidak bisa dibatalkan.")) {
-          appState.done = {};
-          writeDone();
-          paintEverything();
-          showStatus("Progres direset.");
-        }
-      }],
-    ];
-    for (const [element, event, handler] of bindings) {
-      element.addEventListener(event, handler);
-    }
-
-    fetch(DATA_PATH)
-      .then((response) => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
+    fetch(JALUR_DATA)
+      .then(function (respon) {
+        if (!respon.ok) throw new Error("HTTP " + respon.status);
+        return respon.json();
       })
-      .then((payload) => {
-        const verdict = checkImportShape(payload);
-        if (!verdict.ok) {
-          showStatus(`Data trophy tidak valid: ${verdict.error}`);
+      .then(function (muatan) {
+        var putusan = periksaBentukImpor(muatan);
+        if (!putusan.ok) {
+          tampilStatus("Data trophy tidak valid: " + putusan.error);
           return;
         }
-        appState.items = payload.trophies;
-        paintEverything();
-        showStatus(`${payload.trophies.length} trophy dimuat.`);
+        keadaan.daftar = muatan.trophies;
+        gambarSemua();
+        tampilStatus(muatan.trophies.length + " trophy dimuat.");
       })
-      .catch((error) => {
-        showStatus(`Gagal memuat data/trophies.json: ${error.message}`);
-        paintEverything();
+      .catch(function (galat) {
+        tampilStatus("Gagal memuat data/trophies.json: " + galat.message);
+        gambarSemua();
       });
-  };
+  }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
+    document.addEventListener("DOMContentLoaded", mulai);
   } else {
-    boot();
+    mulai();
   }
 
   // Diekspos untuk pengujian otomatis (node + stub DOM minimal).
   window.GTA6Guide = {
-    calcProgress: summarizeProgress,
-    filterTrophies: selectTrophies,
-    readUrlPresets: presetsFromQuery,
-    validateImport: checkImportShape,
-    buildExport: makeExportPayload,
-    STORAGE_KEY: SAVE_KEY,
+    calcProgress: hitungProgres,
+    filterTrophies: saringDaftar,
+    readUrlPresets: presetDariUrl,
+    validateImport: periksaBentukImpor,
+    buildExport: rakitEkspor,
+    STORAGE_KEY: KUNCI_SIMpan,
   };
 })();

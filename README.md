@@ -4,21 +4,21 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/swaetczher/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/swaetczher/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-Panduan trophy PlayStation 5 Grand Theft Auto VI yang jalan sebagai web app statis dan offline: ke-55 trophy tercantum lengkap dengan nama, deskripsi, dan grade resmi; tiap trophy ditemani panduan berbahasa Indonesia yang ditulis dengan kata-kata sendiri dan menyitir sumbernya; ada checklist yang tersimpan di browser, export/import progres, filter, mode spoiler, serta roadmap empat fase menuju Platinum.
+Web app statis dan offline berisi panduan trophy PlayStation 5 Grand Theft Auto VI: ke-55 trophy tercantum lengkap dengan nama, deskripsi, dan grade resmi; tiap trophy ditemani panduan berbahasa Indonesia yang ditulis dengan kata-kata sendiri dan menyitir sumbernya; tersedia checklist yang tersimpan di browser, export/import progres, filter, mode spoiler, serta roadmap empat fase menuju Platinum.
 
-## Menjalankan
+## Cara menjalankan
 
 ```sh
 node serve.ts
 ```
 
-Lalu buka http://localhost:8080 di browser desktop. Bisa juga dibuka langsung dengan klik ganda pada `app/index.html` — aplikasi jalan offline karena semua berkas yang dimuat tinggal di bawah `app/`.
+Kemudian buka http://localhost:8080 di browser desktop. Boleh juga dibuka langsung dengan klik ganda pada `app/index.html` — aplikasi tetap jalan offline karena semua berkas yang dimuat tinggal di bawah `app/`.
 
 ---
 
 Entered on [make.fun](https://make.fun/?ref=s8p0rqq6&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards
 
-## Memakai tracker
+## Cara memakai tracker
 
 1. Buka `app/index.html` di browser desktop (atau sajikan lewat `node serve.ts`).
 2. Centang trophy yang sudah diraih — progres tersimpan otomatis di browser (localStorage, kunci `gta6-trophy-guide-v1`).
@@ -26,7 +26,7 @@ Entered on [make.fun](https://make.fun/?ref=s8p0rqq6&utm_source=github&utm_mediu
 4. **Export progres (JSON)** sebagai cadangan; **Import progres (JSON)** untuk memulihkan di browser atau perangkat lain.
 5. Filter juga bisa dipreset lewat URL, mis. `?grade=Silver`, `?category=activity`, `?missable=1`, `?spoiler=0`.
 
-## Yang ada di dalam
+## Isi aplikasi
 
 - 55 trophy lengkap: nama, deskripsi, dan grade resmi (1 Platinum, 2 Gold, 6 Silver, 46 Bronze; 27 terlihat + 28 hidden).
 - Checklist di browser (localStorage) plus rincian progres per grade.
@@ -37,7 +37,7 @@ Entered on [make.fun](https://make.fun/?ref=s8p0rqq6&utm_source=github&utm_mediu
 - Panduan tiap trophy ditulis dengan kata-kata sendiri + sitasi sumber; 7 trophy yang cara unlock-nya baru laporan komunitas awal ditandai "cara belum terverifikasi".
 - Tanpa logo Rockstar / artwork resmi.
 
-## Berkas
+## Struktur berkas
 
 ```
 main.ts                        — entrypoint grader (Node 22, dari starter kit):
