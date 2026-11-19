@@ -1,814 +1,631 @@
 {
   "meta": {
+    "totalTrophies": 55,
     "game": "Grand Theft Auto VI",
     "platform": "PS5",
-    "totalTrophies": 55,
-    "status": "TERISI dari riset.md job 2026-11-19-gta6-trophy-guide-01 (55 trophy terverifikasi dari >=2 sumber; Maximum Withdrawal = Silver, lihat riset §3). Ditulis ulang penuh di sesi Produksi terekam 19 Nov 2026.",
-    "notes": "Skema per trophy: id (t01..t55 sesuai nomor urut Exophase), name (nama resmi PERSIS), description (deskripsi resmi), grade (Platinum/Gold/Silver/Bronze), category (story/side/collectible/activity/combat/exploration/misc), missable (true/false), missableNote, guide (panduan kata-kata sendiri, bahasa Indonesia), guideSource (label + URL yang disitasi), spoiler (true bila trophy hidden), unverified (true bila cara unlock-nya laporan komunitas awal, belum terkonfirmasi penuh). Tidak ada trophy online di game ini.",
+    "status": "Diisi ulang dari riset.md job 2026-11-19-gta6-trophy-guide-01 (55 trophy, terverifikasi dari dua sumber atau lebih; Maximum Withdrawal = Silver, lihat riset §3). Ditulis ulang seluruhnya pada ronde rebuild-2, 20 Nov 2026.",
+    "notes": "Bentuk tiap trophy: id (t01..t55 mengikuti nomor urut Exophase), name (nama resmi persis), grade (Platinum/Gold/Silver/Bronze), description (deskripsi resmi), category (story/side/collectible/activity/combat/exploration/misc), spoiler (true bila trophy hidden), missable (true/false), missableNote (hanya bila missable), unverified (true bila cara unlock-nya baru laporan komunitas awal), guide (panduan kata-kata sendiri, bahasa Indonesia), guideSource (label + URL yang disitasi). Game ini tidak punya trophy online.",
     "sources": [
-      {
-        "label": "Exophase — daftar resmi 55 trophy",
-        "url": "https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/"
-      },
-      {
-        "label": "PlanetGTA6 — nama + deskripsi + grade",
-        "url": "https://www.planetgta6.com/en/gta-6-trophies/"
-      },
-      {
-        "label": "Output Lag — nama + deskripsi resmi + grade",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      },
-      {
-        "label": "Push Square — GTA 6 Trophy Guide and Roadmap",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      },
-      {
-        "label": "Push Square — GTA 6 100% Completion Checklist",
-        "url": "https://www.pushsquare.com/guides/gta-6-100-completion-checklist"
-      }
+      { "label": "Exophase — daftar resmi 55 trophy", "url": "https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" },
+      { "label": "PlanetGTA6 — nama + deskripsi + grade", "url": "https://www.planetgta6.com/en/gta-6-trophies/" },
+      { "label": "Output Lag — nama + deskripsi resmi + grade", "url": "https://outputlag.com/guides/gta-6-trophy-list/" },
+      { "label": "Push Square — GTA 6 Trophy Guide and Roadmap", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" },
+      { "label": "Push Square — GTA 6 100% Completion Checklist", "url": "https://www.pushsquare.com/guides/gta-6-100-completion-checklist" }
     ]
   },
   "trophies": [
     {
       "id": "t01",
       "name": "Vice Got a Price!",
-      "description": "Congratulations! You're a Leonida Legend.",
       "grade": "Platinum",
+      "description": "Congratulations! You're a Leonida Legend.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Trophy Platinum ini terbuka otomatis begitu 54 trophy lainnya sudah diraih — tidak ada syarat tambahan. Fokus menyelesaikan semua trophy lain; trophy ini menjadi penanda akhir perjalanan dan pop sendiri di akhir.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Platinum ini tidak menuntut aksi khusus: ia muncul sendiri sesudah 54 trophy lain beres. Anggap saja garis finis — kejar trophy lain satu per satu, dan yang ini akan pop tanpa perlu dicari.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t02",
       "name": "Just Like Paradise",
-      "description": "Complete Gone Fishing.",
       "grade": "Bronze",
+      "description": "Complete Gone Fishing.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita pembuka 'Gone Fishing'. Trophy terbuka otomatis saat misi selesai — tidak bisa terlewat selama kamu memainkan cerita utama.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Mainkan misi pembuka Gone Fishing sampai tuntas; trophy menyusul begitu misi berakhir. Tidak ada yang bisa terlewat di sini — cukup ikuti alur cerita.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t03",
       "name": "Paradise Lost",
-      "description": "Complete Chapter 1.",
       "grade": "Bronze",
+      "description": "Complete Chapter 1.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan seluruh Chapter 1 dari cerita utama. Trophy terbuka otomatis saat chapter berakhir — mainkan saja misi cerita berurutan. PENTING: di Chapter 1 ini ada satu sesi meditasi Lucia di balkon rumah Jason (pagi hari setelah misi 'Down to Earth') yang berpotensi tidak bisa diulang — lakukan meditasi itu sebelum Chapter 1 berakhir, demi trophy Positive Mental Attitude.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan Chapter 1 sepenuhnya. Sambil berjalan, sempatkan meditasi Lucia di balkon rumah Jason pada pagi setelah misi Down to Earth — sesi itu mungkin hanya ada di chapter ini, dan berkaitan dengan trophy Positive Mental Attitude.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t04",
       "name": "T**s Ass Drug Money",
-      "description": "Complete Chapter 2.",
       "grade": "Bronze",
+      "description": "Complete Chapter 2.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan seluruh Chapter 2 dari cerita utama. Trophy terbuka otomatis saat chapter berakhir. Catatan: nama trophy ini memang memakai sensor bintang dari gamenya sendiri — bukan sensor dari situs panduan. Setelah misi 'Breakfast Run' di chapter ini, fitur switch Jason/Lucia terbuka dan kamu bisa memanggil partner lewat telepon (dibutuhkan trophy partner).",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan Chapter 2. Begitu misi Breakfast Run selesai, Jason dan Lucia bisa bertukar peran dan saling dipanggil lewat telepon — bekal penting buat trophy partner nanti. Nama trophy ini memang memakai sensor bintang dari gamenya sendiri, bukan sensor dari situs panduan.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t05",
       "name": "Vice City, Baby!",
-      "description": "Complete Chapter 3.",
       "grade": "Bronze",
+      "description": "Complete Chapter 3.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan seluruh Chapter 3 dari cerita utama. Trophy terbuka otomatis saat chapter berakhir. Waspada di chapter ini: balapan 'Race Against Yago' dilaporkan bersifat time-sensitive (ikon jam pasir) dan rangkaian balap jalanannya dihitung ke trophy Strangers & Freaks — buat save manual sebelum balapan itu.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Tamatkan Chapter 3. Sebelum balapan Race Against Yago, simpan manual dulu: balapan itu kabarnya punya batas waktu (ikon jam pasir) dan rangkaian balap jalannya masuk hitungan trophy Strangers & Freaks.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t06",
       "name": "Top Of The World, Ma",
-      "description": "Complete Chapter 4.",
       "grade": "Bronze",
+      "description": "Complete Chapter 4.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan seluruh Chapter 4 dari cerita utama. Trophy terbuka otomatis saat chapter berakhir. Menjelang akhir chapter ini, misi opsional 'That's Where The Money Is…' membuka perampokan brankas bank besar — ikuti truk keamanan ke banknya, karena brankas itu dibutuhkan trophy Maximum Withdrawal.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan Chapter 4. Di ujung chapter, misi opsional That's Where The Money Is… membuka jalan ke brankas bank besar — ikuti truk pengaman sampai ke banknya.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t07",
       "name": "You Gotta Know When to Get Off",
-      "description": "Complete the final mission.",
       "grade": "Gold",
+      "description": "Complete the final mission.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir cerita utama. Trophy Gold ini terbuka otomatis saat kredit akhir berjalan — tidak bisa terlewat selama kamu menamatkan game. Sebelum misi final, buat satu save manual terpisah dan jangan menimpanya: tidak ada mission replay dan tidak ada New Game Plus di game ini.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi terakhir cerita utama dan trophy Gold ini akan pop saat kredit akhir. Buat save manual sebelum misi final dan simpan baik-baik: game ini tanpa mission replay dan tanpa New Game Plus.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t08",
       "name": "Trust",
-      "description": "Complete Breakfast Run.",
       "grade": "Bronze",
+      "description": "Complete Breakfast Run.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'Breakfast Run'. Trophy terbuka otomatis saat misi selesai. Misi ini penting karena setelahnya switch Jason/Lucia terbuka — kamu bisa memanggil partner lewat telepon, yang dibutuhkan trophy Hot Together, Retail Therapy, dan Personal Best.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi Breakfast Run. Sesudah misi ini, pergantian Jason/Lucia terbuka — sejak itu partner bisa dipanggil lewat telepon, syarat buat trophy Hot Together, Retail Therapy, dan Personal Best.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t09",
       "name": "Break the Bank",
-      "description": "Complete The Cartel Heist.",
       "grade": "Bronze",
+      "description": "Complete The Cartel Heist.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'The Cartel Heist'. Trophy terbuka otomatis saat misi selesai — ikuti saja alur cerita.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi The Cartel Heist. Trophy muncul otomatis begitu misi selesai — tidak perlu persiapan khusus.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t10",
       "name": "Family Matters",
-      "description": "Complete Child's Play.",
       "grade": "Bronze",
+      "description": "Complete Child's Play.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'Child's Play'. Trophy terbuka otomatis saat misi selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi Child's Play. Trophy muncul otomatis begitu misi selesai.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t11",
       "name": "DWNFALL",
-      "description": "Complete Headliners.",
       "grade": "Bronze",
+      "description": "Complete Headliners.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'Headliners'. Trophy terbuka otomatis saat misi selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi Headliners. Trophy muncul otomatis begitu misi selesai.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t12",
       "name": "Hi-Jacked",
-      "description": "Complete VCIA Takedown.",
       "grade": "Bronze",
+      "description": "Complete VCIA Takedown.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'VCIA Takedown'. Trophy terbuka otomatis saat misi selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi VCIA Takedown. Trophy muncul otomatis begitu misi selesai.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t13",
       "name": "Snow Storm",
-      "description": "Complete Operation Savage Glory.",
       "grade": "Bronze",
+      "description": "Complete Operation Savage Glory.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi cerita 'Operation Savage Glory'. Trophy terbuka otomatis saat misi selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan misi Operation Savage Glory. Trophy muncul otomatis begitu misi selesai.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t14",
       "name": "A Long Road",
-      "description": "Attain 100% Completion.",
       "grade": "Gold",
+      "description": "Attain 100% Completion.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Capai 100% Completion: tamatkan cerita, selesaikan tugas opsional, operasi geng, perampokan, dan aktivitas. Checklist dalam game baru muncul setelah cerita tamat (Touch Pad > Progress > Stats > 100% Completion), tapi progres yang dikerjakan sebelum tamat tetap terhitung. Bobot checklist: 45% cerita & tugas, 45% eksplorasi & aktivitas, 10% discovery. Kerjakan trophy ini paling akhir — trophy lain yang kamu kejar ikut menaikkan persentasenya. Angka kunci: 100 tugas opsional, operasi geng 39/39, pekerjaan bank 22/22, brankas bank 8/8, kartu 15/18 set, meditasi 15/18, stunt 300/397, Challenge 70/80.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi), Push Square & GTABase via CryptoGames (checklist 100%)",
-        "url": "https://www.pushsquare.com/guides/gta-6-100-completion-checklist"
-      }
-    }
-    ,
+      "missable": false,
+      "guide": "Raih 100% Completion. Daftarnya baru terlihat sesudah tamat (Touch Pad > Progress > Stats > 100% Completion), tapi semua yang dikerjakan sebelum tamat tetap dihitung. Bobotnya: 45% cerita & tugas, 45% eksplorasi & aktivitas, 10% discovery. Selesaikan trophy ini paling belakangan — trophy lain ikut mengisi persentasenya. Patokan angka: 100 tugas opsional, 39/39 operasi geng, 22/22 pekerjaan bank, 8/8 brankas bank, 15/18 set kartu, 15/18 meditasi, 300/397 stunt, 70/80 Challenge.",
+      "guideSource": { "label": "Exophase (daftar resmi), Push Square & GTABase via CryptoGames (checklist 100%)", "url": "https://www.pushsquare.com/guides/gta-6-100-completion-checklist" }
+    },
     {
       "id": "t15",
       "name": "Cunning Stunts",
-      "description": "Complete 250 Stunts.",
       "grade": "Silver",
+      "description": "Complete 250 Stunts.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Selesaikan total 250 stunt dari 397 yang ada (130 stunt jump, 202 under-the-bridge, 40 knife flight, 25 base jump). Peta stunt ada di Touch Pad > Exploration > Stunt Spots. Stunt terakumulasi dari bermain biasa — cari lompatan dan ramp di peta. Tidak ada batas waktu, jadi kerjakan santai sambil mengerjakan trophy lain. Untuk 100% completion dibutuhkan 300 stunt.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Kumpulkan 250 stunt dari total 397 (130 stunt jump, 202 under-the-bridge, 40 knife flight, 25 base jump). Lokasi stunt bisa dilihat di Touch Pad > Exploration > Stunt Spots. Stunt bertambah sambil bermain biasa; tidak ada batas waktu. Untuk 100% dibutuhkan 300 stunt.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t16",
       "name": "Master of None",
-      "description": "Try each type of activity once.",
       "grade": "Bronze",
+      "description": "Try each type of activity once.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Coba satu kali setiap dari 9 jenis aktivitas yang tersedia di Leonida (balapan, memancing, arcade, shooting range, meditasi, dan lain-lain). Cukup satu kali per jenis — tidak perlu menang atau menyelesaikan semuanya. Trophy ini paling mudah: cicipi tiap aktivitas begitu terbuka.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Jajal masing-masing dari 9 jenis aktivitas di Leonida satu kali — balapan, memancing, arcade, shooting range, meditasi, dan sisanya. Sekali coba per jenis sudah cukup; menang atau tamat tidak diwajibkan.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t17",
       "name": "The Shootist",
-      "description": "Earn a gold medal in all Shooting Range challenges.",
       "grade": "Silver",
+      "description": "Earn a gold medal in all Shooting Range challenges.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Raih medali emas di semua 42 tantangan Shooting Range di 2 lokasi: Griffin (18 tantangan) dan Rodgers Ranch (24 tantangan). Datangi shooting range, pelajari target dan batas waktunya, lalu ulangi tiap tantangan sampai skor emas tercapai. Latihan bisa diulang tanpa penalti. Untuk 100% completion dibutuhkan 42/42 emas.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Raih medali emas di seluruh 42 tantangan Shooting Range, tersebar di dua tempat: Griffin (18) dan Rodgers Ranch (24). Tiap tantangan boleh diulang tanpa penalti sampai skor emas tercapai. 42/42 emas juga masuk syarat 100%.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t18",
       "name": "Top Fun",
-      "description": "Win a Top Fun Drone Race at every location.",
       "grade": "Bronze",
+      "description": "Win a Top Fun Drone Race at every location.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Menangkan balapan drone Top Fun di semua 14 lokasinya (sebagian berbayar). Kunjungi tiap lokasi balapan drone di peta, pelajari rutenya, dan menangkan masing-masing satu kali. Bila kalah, balapan bisa diulang. Untuk 100% completion dibutuhkan 42/42 drone time trial.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Menangi balapan drone Top Fun di ke-14 lokasinya; sebagian lokasi memungut bayaran. Pelajari rute tiap lokasi, dan ulangi bila kalah. Untuk 100% dibutuhkan 42/42 drone time trial.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t19",
       "name": "Earn Cash, Not Kudos",
-      "description": "Win 20 different races.",
       "grade": "Bronze",
+      "description": "Win 20 different races.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Menangkan 20 balapan yang BERBEDA — mengulang satu balapan yang sama tidak dihitung. Ikuti balapan di seluruh Leonida (darat dan jenis lainnya) sampai 20 kemenangan berbeda terkumpul. Untuk 100% completion dibutuhkan 30 balapan unik dimenangkan dari 40 yang ada, plus 10 medali emas tantangan balap dari 13.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Menangi 20 balapan yang berbeda satu sama lain — kemenangan berulang di balapan yang sama tidak menambah hitungan. Jelajahi balapan di seluruh Leonida. Untuk 100% dibutuhkan 30 balapan unik dari 40, plus 10 medali emas tantangan balap dari 13.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t20",
       "name": "Baited My Tackle",
-      "description": "Beat Cal in a fishing challenge.",
       "grade": "Bronze",
+      "description": "Beat Cal in a fishing challenge.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Kalahkan Cal dalam tantangan memancing — tangkap Parrotfish seberat lebih dari 2 kg untuk menang. Kamu butuh perahu dan joran. Perhatikan umpan dan timing tarikan; bila kalah, tantang lagi.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Kalahkan Cal dalam tantangan memancing dengan menangkap Parrotfish di atas 2 kg. Siapkan perahu dan joran; perhatikan umpan serta momen menarik kail. Kalah boleh ditantang ulang.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t21",
       "name": "Stick Fiddler",
-      "description": "Complete an arcade game.",
       "grade": "Bronze",
+      "description": "Complete an arcade game.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Tamatkan 1 dari 4 game arcade yang tersedia. Datangi arcade, pilih permainan apa saja, dan mainkan sampai selesai — tidak harus skor tinggi, cukup menyelesaikan permainannya. Untuk 100% completion dibutuhkan 4/4 game dimainkan.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tamatkan satu dari empat game arcade yang tersedia. Pilih permainan apa pun dan mainkan sampai selesai; skor tinggi tidak dipersyaratkan. Untuk 100% dibutuhkan 4/4 game dimainkan.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t22",
       "name": "Road to Rehabilitation",
-      "description": "Complete the final mission for Andy.",
       "grade": "Bronze",
+      "description": "Complete the final mission for Andy.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir untuk karakter Andy. Trophy terbuka otomatis saat rangkaian misi Andy selesai — ikuti penanda misi Andy di peta sampai tidak ada lagi. Semua misi sampingan karakter tetap bisa diselesaikan setelah credits di free roam.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tuntaskan rangkaian misi Andy sampai misi terakhirnya selesai. Semua misi karakter sampingan masih bisa dikerjakan sesudah credits, di free roam.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t23",
       "name": "This Was No Boat Accident",
-      "description": "Complete the final mission for Kenton.",
       "grade": "Bronze",
+      "description": "Complete the final mission for Kenton.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir untuk karakter Kenton — misi terakhirnya bernama 'Maritime Disputes'. Trophy terbuka otomatis saat rangkaian misi Kenton selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tuntaskan rangkaian misi Kenton sampai misi terakhirnya, Maritime Disputes.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t24",
       "name": "The Lone Rider",
-      "description": "Complete the final mission for Billy.",
       "grade": "Bronze",
+      "description": "Complete the final mission for Billy.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir untuk karakter Billy — misi terakhirnya bernama 'Hometown Heroes'. Trophy terbuka otomatis saat rangkaian misi Billy selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tuntaskan rangkaian misi Billy sampai misi terakhirnya, Hometown Heroes.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t25",
       "name": "Strangers & Freaks",
-      "description": "Complete 8 mission strands for strangers across the state of Leonida.",
       "grade": "Silver",
+      "description": "Complete 8 mission strands for strangers across the state of Leonida.",
       "category": "side",
-      "missable": false,
       "spoiler": false,
-      "guide": "Selesaikan 8 rangkaian misi orang asing (strangers) di seluruh Leonida. Cari ikon '?' / penanda orang asing di peta dan selesaikan tiap rangkaiannya. WASPADA (belum terverifikasi penuh, bukan missable pasti): menurut Output Lag, balapan 'Race Against Yago' di Chapter 3 bersifat time-sensitive (ikon jam pasir) dan rangkaian itu dihitung ke trophy ini — buat save manual sebelum balapan itu.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi), Output Lag & Push Square (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Tuntaskan 8 rangkaian misi orang asing di seluruh Leonida; ikuti penanda '?' di peta. Perhatian — belum terverifikasi penuh: Output Lag menyebut balapan Race Against Yago (Chapter 3) punya batas waktu dan masuk hitungan trophy ini, jadi simpan manual sebelum balapan itu.",
+      "guideSource": { "label": "Exophase (daftar resmi), Output Lag & Push Square (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t26",
       "name": "Supply & Demand",
-      "description": "Complete the final mission for Randy.",
       "grade": "Bronze",
+      "description": "Complete the final mission for Randy.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir untuk karakter Randy — kumpulkan wish list kendaraan yang ia minta. Trophy terbuka otomatis saat rangkaian misi Randy selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tuntaskan rangkaian misi Randy sampai misi terakhirnya; kumpulkan kendaraan-kendaraan di wish list yang ia minta.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t27",
       "name": "Spin On This!",
-      "description": "Complete the final mission for Tyrone.",
       "grade": "Bronze",
+      "description": "Complete the final mission for Tyrone.",
       "category": "story",
-      "missable": false,
       "spoiler": true,
-      "guide": "Selesaikan misi terakhir untuk karakter Tyrone — rangkaian misinya berujung di lab 'Kitty Litter'. Trophy terbuka otomatis saat rangkaian misi Tyrone selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Tuntaskan rangkaian misi Tyrone sampai misi terakhirnya; rangkaiannya berujung di lab Kitty Litter.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t28",
       "name": "Positive Mental Attitude",
-      "description": "Meditate at every spot across Leonida.",
       "grade": "Bronze",
+      "description": "Meditate at every spot across Leonida.",
       "category": "activity",
-      "missable": true,
-      "missableNote": "BERPOTENSI MISSABLE — satu-satunya trophy yang berpotensi terlewat. Salah satu sesi meditasi adalah meditasi Lucia di balkon rumah Jason pada Chapter 1 (pagi hari setelah misi 'Down to Earth'); sesi itu hilang begitu Chapter 1 berakhir. GTABase menyatakan belum terkonfirmasi apakah trophy ini mutlak membutuhkan sesi Chapter 1 itu, sementara Output Lag + KeenGamer memperlakukannya sebagai dibutuhkan. Lakukan meditasi balkon Chapter 1 dan simpan save Chapter 1 sampai trophy pop.",
       "spoiler": false,
-      "guide": "Bermeditasilah di SEMUA 18 spot meditasi di 10 lokasi Leonida (ikon ungu saat kamu dekat). Spot outdoor dihitung 2x bila meditasi bareng partner, dan animasi 'zen' terakhir harus selesai dimainkan agar terhitung. Checklist 100% hanya butuh 15 dari 18 meditasi, tapi trophy ini butuh semuanya. Lakukan meditasi begitu menemukan spotnya — jangan ditunda sampai post-game.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi), Push Square & Output Lag (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": true,
+      "missableNote": "BERPOTENSI MISSABLE — satu-satunya trophy yang berisiko terlewat. Meditasi Lucia di balkon rumah Jason pada Chapter 1 (pagi sesudah misi Down to Earth) lenyap begitu Chapter 1 usai. GTABase menyebut belum pasti apakah trophy ini mutlak memerlukan sesi itu; Output Lag dan KeenGamer menganggap perlu. Amankan dengan meditasi balkon di Chapter 1 dan menyimpan save Chapter 1 sampai trophy pop.",
+      "guide": "Bermeditasilah di seluruh 18 spot meditasi di 10 lokasi Leonida (ikon ungu bila sudah dekat). Meditasi outdoor dihitung ganda bila dilakukan bersama partner, dan animasi 'zen' terakhir mesti dimainkan sampai habis supaya terhitung. 100% hanya menuntut 15 dari 18, tetapi trophy ini menuntut semuanya — kerjakan begitu menemukan spotnya, jangan menunggu post-game.",
+      "guideSource": { "label": "Exophase (daftar resmi), Push Square & Output Lag (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t29",
       "name": "Fair Game",
-      "description": "Hunt a unique animal for Bret.",
       "grade": "Bronze",
+      "description": "Hunt a unique animal for Bret.",
       "category": "side",
-      "missable": false,
       "spoiler": true,
-      "guide": "Buru satu hewan unik untuk karakter Bret (quest berburu ini hanya bisa dimainkan Jason). Ikuti rangkaian misi Bret sampai ia memintamu memburu hewan unik tersebut, lalu lacak dan buru hewan itu — bidik kepala atau jantung agar karkas tetap pristine. Trophy terbuka saat buruan diserahkan. Untuk 100% completion dibutuhkan 15/15 target deck Bret.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Ikuti quest berburu Bret — hanya Jason yang bisa memainkannya — sampai ia memintamu memburu satu hewan unik. Lacak dan buru hewan itu; bidik kepala atau jantung supaya karkas tetap pristine, lalu serahkan buruan. Untuk 100% dibutuhkan 15/15 target deck Bret.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t30",
       "name": "Don't Touch My Deck",
-      "description": "Complete 3 Collectible Card sets.",
       "grade": "Silver",
+      "description": "Complete 3 Collectible Card sets.",
       "category": "collectible",
-      "missable": false,
       "spoiler": false,
-      "guide": "Lengkapi 3 set kartu koleksi dari 18 set yang ada (total 480 kartu di Leonida). Kumpulkan kartu-kartu yang tersebar sampai 3 set lengkap terisi — periksa koleksimu di menu untuk melihat kartu mana yang masih kurang. Kartu yang dijual di pawn shop tetap terhitung. Untuk 100% completion dibutuhkan 15/18 set.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
-    }
-    ,
+      "missable": false,
+      "guide": "Lengkapi 3 set kartu dari 18 set yang ada (total 480 kartu). Pantau koleksi di menu untuk melihat kartu yang belum dimiliki. Kartu yang terjual ke pawn shop tetap dihitung. Untuk 100% dibutuhkan 15/18 set.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
+    },
     {
       "id": "t31",
       "name": "You WAiNKer!",
-      "description": "WAiNK It at 100 locations.",
       "grade": "Silver",
+      "description": "WAiNK It at 100 locations.",
       "category": "collectible",
-      "missable": false,
       "spoiler": false,
-      "guide": "Gunakan fitur WAiNK It (aplikasi ponsel, tahan Up) di 100 lokasi berbeda: landmark 31, curiosities 35, sculpture 23, dan tag No Flusher. Jelajahi Leonida dan aktifkan WAiNK It di tiap lokasi baru yang kamu datangi — hitungannya terakumulasi, jadi lakukan sedikit demi sedikit sambil menjelajah.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Pakai WAiNK It (aplikasi ponsel, tahan tombol Up) di 100 lokasi: 31 landmark, 35 curiosities, 23 sculpture, dan tag No Flusher. Lakukan sedikit demi sedikit sambil menjelajah Leonida.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t32",
       "name": "One Last Thing",
-      "description": "Complete 50 Challenges.",
       "grade": "Bronze",
+      "description": "Complete 50 Challenges.",
       "category": "activity",
-      "missable": false,
       "spoiler": false,
-      "guide": "Selesaikan total 50 dari 80 Challenge (8 kategori x 10) — lihat daftarnya di Progress > Challenges. Tantangan terakumulasi dari aktivitas apa pun (balapan, stunt, berburu, dan lain-lain), jadi trophy ini biasanya terbuka sendiri saat kamu mengejar trophy lain. Untuk 100% completion dibutuhkan 70/80 Challenge.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Selesaikan 50 dari 80 Challenge (8 kategori × 10) — daftarnya ada di Progress > Challenges. Challenge bertambah dari segala aktivitas, jadi trophy ini sering pop sendiri saat mengejar trophy lain. Untuk 100% dibutuhkan 70/80.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t33",
       "name": "Hot Together",
-      "description": "Lose a 4 star Wanted Level with your partner and escape the heat.",
       "grade": "Bronze",
+      "description": "Lose a 4 star Wanted Level with your partner and escape the heat.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Hilangkan Wanted Level bintang 4 bersama partner-mu lalu lolos dari kejaran. Panggil partner lewat telepon (switch Jason/Lucia terbuka setelah misi 'Breakfast Run'), naikkan Wanted Level sampai 4 bintang, kemudian kabur dan bersembunyi sampai levelnya hilang — pakai kendaraan cepat dan rute yang menjauh dari polisi. Cara termudah: lakukan saat kabur dari brankas bank (langsung 4 bintang).",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Bersama partner, hilangkan Wanted Level bintang 4 lalu lolos dari kejaran. Panggil partner lewat telepon sesudah Breakfast Run membuka switch Jason/Lucia, naikkan Wanted sampai 4 bintang, lalu kabur dengan kendaraan cepat sampai levelnya padam. Cara paling gampang: kabur dari brankas bank, yang langsung memberi 4 bintang.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t34",
       "name": "Retail Therapy",
-      "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level.",
       "grade": "Bronze",
+      "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Rampok 3 toko berturut-turut bersama partner tanpa kehilangan Wanted Level di antaranya. Panggil partner lewat telepon, rencanakan rute tiga toko yang berdekatan, rampok satu per satu dengan cepat, dan jangan sampai Wanted Level-mu hilang sebelum toko ketiga selesai.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Rampok 3 toko berurutan bersama partner tanpa Wanted Level sempat hilang di tengah jalan. Ajak partner, petakan tiga toko yang berdekatan, rampok satu demi satu dengan cepat.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t35",
       "name": "Whip It Good",
-      "description": "Discover 100 vehicles.",
       "grade": "Bronze",
+      "description": "Discover 100 vehicles.",
       "category": "exploration",
-      "missable": false,
       "spoiler": false,
-      "guide": "Temukan 100 kendaraan berbeda di Leonida — kendaraan baru tercatat saat kamu menaikinya atau memindainya dengan WAiNK. Jelajahi berbagai wilayah dan jenis area (kota, pantai, pedesaan) karena tiap daerah punya kendaraan khasnya. Untuk 100% completion dibutuhkan 200 dari 277 model dasar (kendaraan standout tidak dihitung; perahu dan pesawat bisa di-scan).",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Temukan 100 kendaraan — naik ke kendaraan baru atau pindai dengan WAiNK. Datangi berbagai wilayah (kota, pantai, pedesaan) karena tiap daerah punya kendaraan khas. Untuk 100% dibutuhkan 200 dari 277 model dasar; kendaraan standout tidak dihitung, perahu dan pesawat bisa di-scan.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t36",
       "name": "Gunslinger",
-      "description": "Take down 5 enemies in a single use of Combat Focus.",
       "grade": "Bronze",
+      "description": "Take down 5 enemies in a single use of Combat Focus.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Tumbangkan 5 musuh dalam satu kali penggunaan Combat Focus. Combat Focus diaktifkan dengan L3+R3 saat membidik (efek slow-motion). Cari situasi dengan banyak musuh berdekatan, aktifkan Focus, dan habisi lima target sebelum efeknya habis — senapan serbu dan Adrenaline memperpanjang durasi Focus.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Tumbangkan 5 musuh dalam sekali pakai Combat Focus (L3+R3 saat membidik, efek slow-motion). Cari kerumunan musuh, aktifkan Focus, dan habisi lima target sebelum efek habis. Senapan serbu dan Adrenaline membantu memperpanjang Focus.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t37",
       "name": "Catch Me If You Can",
-      "description": "Make an unscheduled departure at VCIA.",
       "grade": "Bronze",
+      "description": "Make an unscheduled departure at VCIA.",
       "category": "exploration",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: curi pesawat penumpang besar yang terparkir di boarding bridge VCIA (gate E3/E4 dilaporkan berhasil), lalu terbang sekitar 1 km dari bandara sampai trophy pop. Jangan disajikan sebagai fakta resmi — cara ini masih laporan pemain awal.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: kabarnya, curi pesawat penumpang besar yang parkir di boarding bridge VCIA (gate E3/E4 disebut-sebut berhasil), lalu terbangkan sekitar 1 km menjauh dari bandara sampai trophy pop. Anggap ini laporan pemain awal, bukan fakta resmi.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t38",
       "name": "Challenging Tank",
-      "description": "Kinda hot in these Rhinos.",
       "grade": "Bronze",
+      "description": "Kinda hot in these Rhinos.",
       "category": "combat",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: trophy ini terkait tank Rhino — dilaporkan ada Rhino yang parkir di sisi selatan Mile Zero Air Station, pulau barat daya. Naiki dan gunakan tank itu. Deskripsi resminya sengaja samar, jadi cara pastinya masih laporan pemain awal.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: trophy ini berkaitan dengan tank Rhino; kabarnya ada Rhino terparkir di sisi selatan Mile Zero Air Station, pulau barat daya. Deskripsi resminya memang samar, jadi cara pastinya masih sebatas laporan pemain awal.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t39",
       "name": "Sneakthief",
-      "description": "Rob a jewelry store without being detected.",
       "grade": "Bronze",
+      "description": "Rob a jewelry store without being detected.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Rampok toko perhiasan tanpa terdeteksi. Gunakan Snap Gun di pintu belakang toko (didapat dari misi Chapter 3 'Yasmani's Jewelry Jobs') — jangan dobrak pintu, karena alarm akan bunyi. Cari catatan kode brankas di ruang belakang, bergerak pelan, hindari kamera dan penjaga. Bila ketahuan, ulangi dari save sebelum masuk toko.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Rampok toko perhiasan tanpa ketahuan. Masuk lewat pintu belakang dengan Snap Gun dari misi Chapter 3 Yasmani's Jewelry Jobs — jangan dobrak pintu karena alarm menyala. Cari catatan kode brankas di ruangan belakang, bergerak pelan, jauhi kamera dan penjaga. Ketahuan? Ulangi dari save sebelum masuk toko.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t40",
       "name": "Maximum Withdrawal",
-      "description": "Rob 5 Bank Vaults and escape.",
       "grade": "Silver",
+      "description": "Rob 5 Bank Vaults and escape.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Rampok 5 brankas bank lalu lolos. Akses brankas besar lewat misi opsional akhir Chapter 4 'That's Where The Money Is…' — ikuti truk keamanan ke bank besar. Tiap brankas memicu Wanted 4 bintang, jadi sekalian kejar trophy Hot Together saat kabur. Total 5 brankas dari 8 yang ada (8/8 dibutuhkan untuk 100% completion). Catatan grade: Silver — Push Square sempat menulis Bronze, tapi Exophase, PlanetGTA6, Output Lag, dan sumber lain sepakat Silver (lihat riset §3).",
-      "guideSource": {
-        "label": "Exophase (daftar resmi), PlanetGTA6 & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Rampok 5 brankas bank lalu lolos. Jalurnya lewat misi opsional akhir Chapter 4 That's Where The Money Is… — buntuti truk keamanan menuju bank besar. Setiap brankas memicu Wanted 4 bintang, jadi manfaatkan pelarian itu untuk Hot Together. Total 5 dari 8 brankas; 8/8 masuk syarat 100%. Catatan grade: Silver — mayoritas sumber sepakat Silver (lihat riset §3), Push Square sempat menulis Bronze.",
+      "guideSource": { "label": "Exophase (daftar resmi), PlanetGTA6 & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t41",
       "name": "A Classic Blitz Play",
-      "description": "Rob an Armored Truck and escape.",
       "grade": "Bronze",
+      "description": "Rob an Armored Truck and escape.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Rampok satu truk lapis baja (armored truck) lalu lolos. Cari truk lapis baja yang sedang beroperasi, hentikan dan bobol, ambil isinya, lalu kabur sampai keluar dari zona heat merah.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Rampok satu truk lapis baja yang sedang beroperasi, ambil isinya, lalu kabur sampai keluar zona heat merah.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t42",
       "name": "The Goodtime State",
-      "description": "Explore all of Leonida.",
       "grade": "Bronze",
+      "description": "Explore all of Leonida.",
       "category": "exploration",
-      "missable": false,
       "spoiler": false,
-      "guide": "Jelajahi seluruh wilayah Leonida. Trophy terbuka saat semua area di peta sudah kamu kunjungi — berkendara keliling negara bagian dan perhatikan wilayah yang masih gelap di peta, lalu datangi satu per satu.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Kunjungi semua wilayah Leonida sampai peta tidak lagi gelap. Berkendara keliling negara bagian dan datangi tiap area yang belum tersentuh.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t43",
       "name": "Pest Control",
-      "description": "Rob an Illegal Operation belonging to each gang.",
       "grade": "Bronze",
+      "description": "Rob an Illegal Operation belonging to each gang.",
       "category": "combat",
-      "missable": false,
       "spoiler": false,
-      "guide": "Rampok satu operasi ilegal milik tiap geng — total 9 geng di Leonida. Cari operasi ilegal tiap geng di peta dan rampok masing-masing satu. Operasi bisa respawn kalau ada barang berharga yang tertinggal, tapi tunggunya lama — jadi loot semua barang kunci di kunjungan pertama. Untuk 100% completion dibutuhkan 39/39 operasi geng.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
-    }
-    ,
+      "missable": false,
+      "guide": "Rampok satu operasi ilegal dari masing-masing 9 geng di Leonida. Operasi bisa muncul lagi bila ada barang berharga tertinggal, tetapi jedanya lama — jadi jarah semua barang kunci pada kunjungan pertama. Untuk 100% dibutuhkan 39/39 operasi geng.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
+    },
     {
       "id": "t44",
       "name": "In The Beginning…",
-      "description": "Enjoy a cocktail with a view on Ocean Beach.",
       "grade": "Bronze",
+      "description": "Enjoy a cocktail with a view on Ocean Beach.",
       "category": "exploration",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: nikmati koktail sambil memandang pemandangan di Ocean Beach — datangi bar atau tempat minum di Ocean Beach, pesan koktail, dan nikmati pemandangannya sampai trophy terbuka. Output Lag mencatat trophy ini tidak punya metode unlock terkonfirmasi saat peluncuran.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: kabarnya, pesan koktail di bar atau tempat minum di Ocean Beach lalu nikmati pemandangan sampai trophy terbuka. Output Lag mencatat trophy ini tanpa metode unlock terkonfirmasi saat peluncuran.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t45",
       "name": "Capital Offense",
-      "description": "Smash your way out of a vehicle showroom in classic style.",
       "grade": "Bronze",
+      "description": "Smash your way out of a vehicle showroom in classic style.",
       "category": "combat",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: hancurkan jalan keluar dari showroom kendaraan dengan gaya klasik — masuk ke showroom dengan kendaraan, lalu terobos kaca/etalaase dan keluar sambil mengemudi, persis gaya klasik seri ini. Output Lag mencatat trophy ini tidak punya metode unlock terkonfirmasi saat peluncuran.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: kabarnya, terobos keluar showroom kendaraan dengan mengemudi menembus kaca/etalase, ala gaya klasik seri ini. Output Lag mencatat trophy ini tanpa metode unlock terkonfirmasi saat peluncuran.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t46",
       "name": "Let’s Go Bowling",
-      "description": "Follow-through at the Kolt & Associates' bowling alley.",
       "grade": "Bronze",
+      "description": "Follow-through at the Kolt & Associates' bowling alley.",
       "category": "activity",
-      "missable": false,
       "spoiler": true,
-      "guide": "Main bowling di bowling alley Kolt & Associates dan selesaikan permainan (follow-through). Lokasi ini adalah Kingpin Bowling — sebuah operasi ilegal yang terbuka di Chapter 2. Datangi lokasinya dan mainkan satu game bowling sampai selesai. Tips dari panduan komunitas: bawa Sticky Bomb, dan kalau merampok lokasinya sekalian ambil 3 barang (jam mewah, shotgun, isi brankas) lalu kabur.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Mainkan bowling sampai selesai (follow-through) di bowling alley Kolt & Associates — alias Kingpin Bowling, operasi ilegal yang terbuka di Chapter 2. Sekalian merampok? Panduan komunitas menyarankan bawa Sticky Bomb dan ambil tiga barang: jam mewah, shotgun, dan isi brankas, lalu kabur.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t47",
       "name": "Personal Best",
-      "description": "A partnership with mass appeal.",
       "grade": "Bronze",
+      "description": "A partnership with mass appeal.",
       "category": "misc",
-      "missable": false,
       "spoiler": true,
-      "guide": "Trophy partner: Jason dan Lucia sama-sama harus mencapai Strength maksimum di gym — latihan bareng partner. Panggil partner lewat telepon (switch terbuka setelah misi 'Breakfast Run' di Chapter 2), lalu berlatih bersama sampai keduanya mencapai Strength maksimal.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Trophy partner: Jason dan Lucia mesti sama-sama mencapai Strength maksimum di gym, berlatih bersama. Panggil partner lewat telepon sesudah switch terbuka di Breakfast Run (Chapter 2), lalu latihan bareng sampai keduanya mentok.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t48",
       "name": "Actions Speak Louder",
-      "description": "Choices made (for better or worse).",
       "grade": "Bronze",
+      "description": "Choices made (for better or worse).",
       "category": "misc",
-      "missable": false,
       "spoiler": true,
-      "guide": "Lakukan 500 aksi yang mengubah Criminal Profile — perampokan dan perkelahian mengisinya secara alami selama bermain. PERINGATAN: menurut GTABase, mendorong Criminal Profile sampai 'Irredeemable' bersifat permanen — jadi jangan sengaja memaksakan profil ke tingkat itu hanya demi trophy ini; biarkan terisi dari permainan biasa.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi), Output Lag & GTABase (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "missable": false,
+      "guide": "Kumpulkan 500 aksi yang mengubah Criminal Profile; perampokan dan perkelahian mengisinya dengan sendirinya selama bermain. Peringatan: menurut GTABase, Criminal Profile yang didorong sampai Irredeemable tidak bisa kembali — jangan memaksakan profil ke tingkat itu hanya demi trophy ini.",
+      "guideSource": { "label": "Exophase (daftar resmi), Output Lag & GTABase (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t49",
       "name": "Bad Luck, I Guess",
-      "description": "Second time's the charm.",
       "grade": "Bronze",
+      "description": "Second time's the charm.",
       "category": "misc",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: deskripsi resminya samar ('kesempatan kedua yang berhasil') — detail komunitasnya belum mapan saat peluncuran. Output Lag mencatat trophy ini tidak punya metode unlock terkonfirmasi saat peluncuran. Jangan ikuti klaim cara unlock yang belum diverifikasi.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: deskripsi resminya samar (kesempatan kedua yang berhasil), dan detail komunitasnya belum mapan saat peluncuran. Output Lag mencatat trophy ini tanpa metode unlock terkonfirmasi saat peluncuran — jangan percaya klaim cara unlock yang belum diverifikasi.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t50",
       "name": "The Truth Is Out There",
-      "description": "What the hell just happened?",
       "grade": "Bronze",
+      "description": "What the hell just happened?",
       "category": "misc",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: deskripsi resminya samar ('apa yang baru saja terjadi?') — kemungkinan terkait kejadian aneh atau rahasia di dunia game. Output Lag mencatat trophy ini tidak punya metode unlock terkonfirmasi saat peluncuran.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: deskripsi resminya samar (apa yang baru saja terjadi?), kemungkinan berkaitan dengan kejadian aneh atau rahasia di dunia game. Output Lag mencatat trophy ini tanpa metode unlock terkonfirmasi saat peluncuran.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t51",
       "name": "Ten Pin",
-      "description": "Bowl 'em over with a melee drive-by.",
       "grade": "Bronze",
+      "description": "Bowl 'em over with a melee drive-by.",
       "category": "combat",
-      "missable": false,
       "spoiler": true,
+      "missable": false,
       "unverified": true,
-      "guide": "LAPORAN KOMUNITAS AWAL, BELUM TERKONFIRMASI PENUH: jatuhkan target dengan drive-by jarak dekat memakai senjata melee — seperti menjatuhkan pin bowling. Lakukan drive-by dari kendaraan sambil menyerang dengan senjata melee sampai target tumbang. Output Lag mencatat trophy ini tidak punya metode unlock terkonfirmasi saat peluncuran.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Output Lag (panduan)",
-        "url": "https://outputlag.com/guides/gta-6-trophy-list/"
-      }
+      "guide": "LAPORAN KOMUNITAS AWAL — BELUM TERKONFIRMASI PENUH: kabarnya, jatuhkan target dengan melee drive-by dari kendaraan — seperti menjatuhkan pin bowling. Output Lag mencatat trophy ini tanpa metode unlock terkonfirmasi saat peluncuran.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Output Lag (panduan)", "url": "https://outputlag.com/guides/gta-6-trophy-list/" }
     },
     {
       "id": "t52",
       "name": "Dime on the Dollar",
-      "description": "Earn $250,000 laundering Marked Bills through your contacts.",
       "grade": "Bronze",
+      "description": "Earn $250,000 laundering Marked Bills through your contacts.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Hasilkan $250.000 dengan mencuci Marked Bills lewat kontak-kontakmu. Marked Bills didapat dari pekerjaan bank dan payday loan — cuci lewat kontak sampai total $250.000 tercapai; jumlahnya kumulatif. Untuk 100% completion dibutuhkan fence: narkotika $100.000, perhiasan $100.000, marked bills $250.000, dan kendaraan $200.000.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Cuci Marked Bills lewat kontak sampai terkumpul $250.000; Marked Bills diperoleh dari pekerjaan bank dan payday loan. Jumlahnya kumulatif. Untuk 100% ada target fence: narkotika $100.000, perhiasan $100.000, marked bills $250.000, kendaraan $200.000.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t53",
       "name": "Treat Yo Self",
-      "description": "Spend $100,000 across all shops.",
       "grade": "Bronze",
+      "description": "Spend $100,000 across all shops.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Belanjakan total $100.000 di semua toko. Belanja apa saja di toko mana pun — pakaian, senjata, kendaraan, properti — sampai total pengeluaran mencapai $100.000. Pengeluaran terakumulasi selama bermain, jadi trophy ini biasanya terbuka sendiri di tengah perjalanan platinum.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Belanjakan total $100.000 di semua toko — pakaian, senjata, kendaraan, apa saja. Pengeluaran terakumulasi sepanjang permainan, jadi trophy ini biasanya pop sendiri di tengah perjalanan menuju Platinum.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t54",
       "name": "Little Boxes",
-      "description": "Purchase all garage properties.",
       "grade": "Bronze",
+      "description": "Purchase all garage properties.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Beli semua 8 properti garasi yang tersedia via aplikasi Vice City Real Estate (terbuka setelah misi Chapter 2 'Daily Driver'), total sekitar $160.000. Garasi yang didapat dari cerita tidak dihitung. Kumpulkan uang dulu, lalu beli tiap garasi sampai tidak ada lagi yang tersisa untuk dibeli.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Beli kedelapan properti garasi lewat aplikasi Vice City Real Estate (terbuka sesudah misi Chapter 2 Daily Driver), total sekitar $160.000. Garasi pemberian cerita tidak dihitung — kumpulkan uang, lalu beli satu per satu sampai habis.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     },
     {
       "id": "t55",
       "name": "On the Spot",
-      "description": "Register 10 vehicles to the Scooter Bros app.",
       "grade": "Bronze",
+      "description": "Register 10 vehicles to the Scooter Bros app.",
       "category": "misc",
-      "missable": false,
       "spoiler": false,
-      "guide": "Daftarkan 10 kendaraan ke aplikasi Scooter Bros. Aplikasi terbuka lewat misi Chapter 2 'Moses': bawa kendaraan ke Respray lalu Register. Dari Chapter 3 bisa juga lewat Pay 'n' Spray. Tiap mobil butuh satu slot garasi kosong, jadi pastikan ada garasi yang masih muat.",
-      "guideSource": {
-        "label": "Exophase (daftar resmi) & Push Square (panduan)",
-        "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap"
-      }
+      "missable": false,
+      "guide": "Daftarkan 10 kendaraan ke aplikasi Scooter Bros. Aplikasi terbuka lewat misi Chapter 2 Moses: bawa kendaraan ke Respray lalu Register; sejak Chapter 3 bisa juga via Pay 'n' Spray. Setiap mobil butuh satu slot garasi kosong — pastikan masih ada ruang.",
+      "guideSource": { "label": "Exophase (daftar resmi) & Push Square (panduan)", "url": "https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap" }
     }
   ]
 }

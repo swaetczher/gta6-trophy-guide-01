@@ -1,49 +1,64 @@
-// A working gta6-trophy-guide-01 entry (Node 22, standard library only): the guide is this directory's app/ folder,
-// plain static files a browser opens at app/index.html (ES modules, CSS, no build step), offline: it loads nothing
-// over the network, and its trophy list and guides are app/data/trophies.json. The program hands it in: it copies app/
-// and screenshots/ from beside this file to /output and writes /output/dossier.json, the summary the judge reads (your
-// screenshots, the first load's files and bytes, and your source), with the vendored make.fun library. Leave
-// vendor/makefun-frontend.ts as it is: the scorer requires dossier.json to be byte for byte what its own copy writes.
+// Entrypoint penyerahan gta6-trophy-guide-01 (Node 22, pustaka standar saja).
+// Panduan trophy-nya sendiri adalah folder app/ di sebelah file ini:
+// berkas statis biasa yang dibuka browser di app/index.html (tanpa
+// langkah build, tanpa jaringan), dan daftar + panduan ke-55 trophy
+// tinggal di app/data/trophies.json. Tugas skrip ini hanya menyerahkan:
+// menyalin app/ dan screenshots/ ke /output lalu menulis
+// /output/dossier.json — ringkasan yang dibaca juri (tangkapan layar,
+// berkas saat pertama dimuat beserta ukurannya, dan sumbernya) —
+// memakai pustaka make.fun yang sudah di-vendor. Jangan ubah
+// vendor/makefun-frontend.ts: penilai menuntut dossier.json sama
+// persis byte demi byte dengan yang ditulis salinan pustakanya sendiri.
 //
-// Only the plumbing, not a winner: a plain checklist of the 55 trophies with a one-line hint each. Write a real guide
-// for every trophy in your own words, a roadmap to the platinum, filters and a spoiler setting in app/, put 3 or 4 PNG
-// or JPEG screenshots of it in screenshots/ (the first by name is the cover; shots.json says which views this
-// starter's were taken of), and run it.
-//
-// Serve it locally with `node serve.ts`, then open http://localhost:8080.
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
+// Jalankan server dev lokal dengan `node serve.ts`, lalu buka
+// http://localhost:8080. Di luar kontainer penilai, MAKEFUN_OUTPUT_DIR
+// menggantikan /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+//
+// Ditulis ulang pada ronde rebuild-2 (20 Nov 2026): nama variabel,
+// komentar, dan pesan log semuanya baru; perilaku dan isi dossier
+// tidak berubah.
 
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { buildDossier } from './vendor/makefun-frontend.ts';
+import { cpSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { buildDossier } from "./vendor/makefun-frontend.ts";
 
-const here = fileURLToPath(new URL('.', import.meta.url));
-const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const folderAsal = fileURLToPath(new URL(".", import.meta.url));
+const folderTujuan = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const KODE_ENTRI = "gta6-trophy-guide-01";
 
-// Rebuild terekam R2 (20 Nov 2026): entrypoint ditulis ulang agen —
-// log startup + validasi input sebelum menyalin, tanpa mengubah isi dossier.
-const ENTRY_SLUG = 'gta6-trophy-guide-01';
-console.error(`[${ENTRY_SLUG}] build start: menyalin app/ + screenshots/ ke ${out}`);
+console.error(`[${KODE_ENTRI}] mulai menyerahkan: app/ + screenshots/ -> ${folderTujuan}`);
+mkdirSync(folderTujuan, { recursive: true });
 
-mkdirSync(out, { recursive: true });
-
-// Validasi input sebelum menyalin: gagal cepat dengan pesan jelas bila
-// app/index.html hilang, daripada menghasilkan dossier setengah jadi.
-if (!existsSync(join(here, 'app', 'index.html'))) {
-  throw new Error(`[${ENTRY_SLUG}] app/index.html tidak ditemukan di ${here}`);
+// Berhenti cepat dengan pesan yang jelas bila berkas utama hilang,
+// daripada menyerahkan dossier setengah jadi.
+const halamanUtama = join(folderAsal, "app", "index.html");
+if (!existsSync(halamanUtama)) {
+  throw new Error(`[${KODE_ENTRI}] berkas utama tidak ada: ${halamanUtama}`);
 }
-cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
-mkdirSync(join(out, 'screenshots'), { recursive: true });
-if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
+cpSync(join(folderAsal, "app"), join(folderTujuan, "app"), { recursive: true });
+mkdirSync(join(folderTujuan, "screenshots"), { recursive: true });
+const folderShot = join(folderAsal, "screenshots");
+if (existsSync(folderShot)) {
+  cpSync(folderShot, join(folderTujuan, "screenshots"), { recursive: true });
+}
 
-// The scorer's own caps (reference/gate.json): only text_max_bytes shapes the bytes; the others refuse an entry the
-// scorer would refuse (more than 4 screenshots or one over 256 KiB; more than 993 files and directories in app/ or
-// 48 MiB of app files: app/ counts beside /output's own 1000-entry cap, its screenshots/ and dossier.json).
+// Batas dari penilai (reference/gate.json): hanya text_max_bytes yang
+// membentuk byte dossier; sisanya menolak entri yang memang akan
+// ditolak penilai (lebih dari 4 tangkapan layar atau satu di atas
+// 256 KiB; lebih dari 993 berkas + direktori di app/ atau 48 MiB
+// berkas app/: app/ dihitung berdampingan dengan batas 1000 entri
+// /output sendiri, berikut screenshots/ dan dossier.json di dalamnya).
+const jalurDossier = join(folderTujuan, "dossier.json");
 writeFileSync(
-  join(out, 'dossier.json'),
-  buildDossier(out, { text_max_bytes: 163840, screenshots: { max: 4, max_bytes: 262144 }, app_max_files: 993, app_max_bytes: 50331648 }),
+  jalurDossier,
+  buildDossier(folderTujuan, {
+    text_max_bytes: 163840,
+    screenshots: { max: 4, max_bytes: 262144 },
+    app_max_files: 993,
+    app_max_bytes: 50331648,
+  }),
 );
 
-console.error(`[${ENTRY_SLUG}] build done: dossier.json ditulis ke ${join(out, 'dossier.json')}`);
+console.error(`[${KODE_ENTRI}] selesai: dossier.json tersimpan di ${jalurDossier}`);
